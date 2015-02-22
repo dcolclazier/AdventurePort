@@ -49,8 +49,9 @@
      <Compile Include="Assets\Code\Abstract\IGameState.cs" />
      <Compile Include="Assets\Code\Scripts\GameManager.cs" />
      <Compile Include="Assets\Code\Scripts\PlayerChar.cs" />
+     <Compile Include="Assets\Code\States\MainMenuState.cs" />
      <Compile Include="Assets\Code\States\PlayingGameState.cs" />
-     <Compile Include="Assets\Code\States\StartScreenState.cs" />
+     <Compile Include="Assets\Code\States\WinGameState.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

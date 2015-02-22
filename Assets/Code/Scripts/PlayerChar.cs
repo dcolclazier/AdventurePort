@@ -3,23 +3,65 @@ using System.Collections;
 using Assets.Code.Scripts;
 using Assets.Code.States;
 
-public class PlayerChar : MonoBehaviour {
+public class PlayerChar : MonoBehaviour
+{
+
+    public SpriteRenderer Sprite;
+    public Transform Transform;
+
+    public float PlayerSpeed;
+
     private GameManager _manager;
     private bool _mouseOver;
     private bool _currentlySelected;
     // Use this for initialization
-	void Start ()
+ 
+
+    //lerping stuff test
+    
+    bool currentlyMoving = false;
+    void Start ()
 	{
 	    _manager = GameObject.Find("GameManager").GetComponent<GameManager>();
 	    _mouseOver = false;
 	    _currentlySelected = false;
-
+        transform.Translate(Random.Range(-2, 2), Random.Range(-2, 2),0);
 	    _manager.MouseClicked += LeftMouseClicked;
+        _manager.MouseHeld += LeftMouseHeld;
+
 	}
 
-    private void LeftMouseClicked(int value)
+    private void LeftMouseClicked(int value, Vector3 mousePosition)
     {
-        if (!_mouseOver) _currentlySelected = false;
+        if (!_mouseOver && value == 0) _currentlySelected = false;
+        currentlyMoving = true;
+
+        Debug.Log("Currently Selected: " + _currentlySelected);
+        Debug.Log("MouseOver:  " + _mouseOver);
+    }
+
+    private void LeftMouseHeld(int value, Vector3 mousePosition)
+    {
+        if (!_currentlySelected || value != 1) return;
+
+        MovePlayer(transform.position, Camera.main.ScreenToWorldPoint(mousePosition));
+        
+
+
+    }
+
+    private void MovePlayer(Vector3 startPos, Vector3 endPos)
+    {
+        float lerpTime = 1f;
+        float currentLerpTime = 0;
+        float moveDistance = 10f;
+
+        currentLerpTime += Time.deltaTime;
+        if (currentLerpTime > lerpTime) currentLerpTime = lerpTime;
+        float perc = currentLerpTime/lerpTime;
+        Transform.position = Vector3.Lerp(startPos, new Vector3(endPos.x,endPos.y,0),  PlayerSpeed/100*Time.deltaTime);
+
+
     }
 
     // Update is called once per frame
@@ -46,8 +88,9 @@ public class PlayerChar : MonoBehaviour {
 
     void EnableHalo(bool enable)
     {
-        var halo = GameObject.Find("selector_halo").GetComponent("Halo");
-        halo.GetType().GetProperty("enabled").SetValue(halo, enable, null);
+        var myhalo = transform.FindChild("selector_halo").GetComponent("Halo");
+        //var halo = GameObject.Find("selector_halo").GetComponent("Halo");
+        myhalo.GetType().GetProperty("enabled").SetValue(myhalo, enable, null);
     }
 
     void TempMovement()
