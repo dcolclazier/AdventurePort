@@ -26,8 +26,9 @@ public class PlayerChar : MonoBehaviour
 	    _mouseOver = false;
 	    _currentlySelected = false;
         transform.Translate(Random.Range(-2, 2), Random.Range(-2, 2),0);
-	    _manager.MouseClicked += LeftMouseClicked;
-        _manager.MouseHeld += RightMouseHeld;
+
+	    EventHandler.Instance.MouseClicked += LeftMouseClicked;
+        EventHandler.Instance.MouseHeld += RightMouseHeld;
 
 	}
 

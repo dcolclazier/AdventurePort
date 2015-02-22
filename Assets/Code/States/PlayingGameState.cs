@@ -7,15 +7,16 @@ using UnityEngine;
 
 namespace Assets.Code.States
 {
-    class PlayingGameState : IGameState
+    internal class PlayingGameState : IGameState
     {
         private readonly GameManager _manager;
         public List<GameObject> PlayerParty { get; set; }
         public int PlayerCharacterCount = 2;
+
         public PlayingGameState(GameManager manager)
         {
             _manager = manager;
-            
+
         }
 
         public void Update()
@@ -31,6 +32,6 @@ namespace Assets.Code.States
 
         }
 
-        
+
     }
 }

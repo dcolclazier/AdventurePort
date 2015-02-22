@@ -9,51 +9,31 @@ namespace Assets.Code.Scripts
     public delegate void Click(int button, Vector3 mousePosition); 
     public class GameManager : MonoBehaviour
     {
-
-       
         public Texture2D GameBackground;
         public IGameState CurrentState { get; set; }
-
-        public event Click MouseClicked;
-        public event Click MouseHeld;
+        
         public void Start()
         {
             CurrentState = new MainMenuState(this);
-            //Debug.Log("Game Manager started.");
+            EventHandler.Instance.MouseHeld += MiddleMouseHeld;
+        }
+        private void MiddleMouseHeld(int button, Vector3 mouseposition)
+        {
+            if (button != 2) return;
+ 
+            var moveDirection = new Vector3(-Input.GetAxis("Mouse X"), -Input.GetAxis("Mouse Y"), 0);
+            Camera.main.transform.position += moveDirection;
         }
         public void Update ()
         {
             if (CurrentState != null) CurrentState.Update();
-
-            if(Input.GetMouseButtonDown(0)) OnClick(0);
-            if(Input.GetMouseButtonDown(1)) OnClick(1);
-            if(Input.GetMouseButtonDown(2)) OnClick(2);
-
-            if(Input.GetMouseButton(0)) OnHeld(0);
-            if(Input.GetMouseButton(1)) OnHeld(1);
-            if(Input.GetMouseButton(2)) OnHeld(2);
         }
-	
-        // Update is called once per frame
         public void OnGUI()
         {
             if (CurrentState != null) CurrentState.Render();
         }
-
-        private Vector3 GetMousePosition()
-        {
-            return Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x,Input.mousePosition.y,0));
-            //return new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0);
-        }
-
-        public void OnClick(int button)
-        {
-            if (MouseClicked != null) MouseClicked.Invoke(button, GetMousePosition());
-        }
-
-        public void OnHeld(int button)
-        {
-            if (MouseHeld != null) MouseHeld.Invoke(button, GetMousePosition());
-        }
+    
     }
+
+    
 }
