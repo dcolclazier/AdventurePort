@@ -49,3 +49,5 @@ ProjectSettings/
 Library/
 *.png
 *.suo
+*.prefab
+*.rar
