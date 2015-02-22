@@ -4,6 +4,13 @@ namespace Assets.Code.Scripts
 {
     public class InfoBlock : IBlock
     {
+        public string InterruptMessage
+        {
+            get { return "Not interrupted!"; }
+            set { InterruptMessage = value; }
+
+        }
+
         public void PreInterrupt()
         {
             Debug.Log("Popped an info block.");
@@ -11,7 +18,7 @@ namespace Assets.Code.Scripts
 
         public void PostInterrupt()
         {
-            Debug.Log("Well shit.. I was interrupted.");
+            Debug.Log(InterruptMessage);
         }
     }
 }

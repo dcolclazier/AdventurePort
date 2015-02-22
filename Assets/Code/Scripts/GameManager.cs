@@ -20,7 +20,7 @@ namespace Assets.Code.Scripts
         public void Start()
         {
             CameraManager = new CameraManager(this);
-            //CurrentState = new MainMenuState(this);
+            CurrentState = new PlayingGameState(this);
             StackManager = new StackManager(this);
         }
        

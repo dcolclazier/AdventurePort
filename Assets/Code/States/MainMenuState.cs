@@ -18,8 +18,7 @@ namespace Assets.Code.States
 
         public void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Space))
-                _manager.CurrentState = new PlayingGameState(_manager);
+           
         }
 
         public void Render()
