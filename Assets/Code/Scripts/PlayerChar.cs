@@ -27,7 +27,7 @@ public class PlayerChar : MonoBehaviour
 	    _currentlySelected = false;
         transform.Translate(Random.Range(-2, 2), Random.Range(-2, 2),0);
 	    _manager.MouseClicked += LeftMouseClicked;
-        _manager.MouseHeld += LeftMouseHeld;
+        _manager.MouseHeld += RightMouseHeld;
 
 	}
 
@@ -35,33 +35,20 @@ public class PlayerChar : MonoBehaviour
     {
         if (!_mouseOver && value == 0) _currentlySelected = false;
         currentlyMoving = true;
-
-        Debug.Log("Currently Selected: " + _currentlySelected);
-        Debug.Log("MouseOver:  " + _mouseOver);
     }
 
-    private void LeftMouseHeld(int value, Vector3 mousePosition)
+    private void RightMouseHeld(int value, Vector3 mousePosition)
     {
         if (!_currentlySelected || value != 1) return;
 
-        MovePlayer(transform.position, Camera.main.ScreenToWorldPoint(mousePosition));
-        
-
-
+        //MovePlayer(transform.position, Camera.main.ScreenToWorldPoint(mousePosition));
+        MovePlayer(transform.position, mousePosition);
     }
 
     private void MovePlayer(Vector3 startPos, Vector3 endPos)
     {
-        float lerpTime = 1f;
-        float currentLerpTime = 0;
-        float moveDistance = 10f;
-
-        currentLerpTime += Time.deltaTime;
-        if (currentLerpTime > lerpTime) currentLerpTime = lerpTime;
-        float perc = currentLerpTime/lerpTime;
-        Transform.position = Vector3.Lerp(startPos, new Vector3(endPos.x,endPos.y,0),  PlayerSpeed/100*Time.deltaTime);
-
-
+        //Transform.position = Vector3.Lerp(startPos, new Vector3(endPos.x,endPos.y,0),  PlayerSpeed/100*Time.deltaTime);
+        Transform.position = Vector3.Lerp(startPos, endPos,  PlayerSpeed/100*Time.deltaTime);
     }
 
     // Update is called once per frame
@@ -88,9 +75,9 @@ public class PlayerChar : MonoBehaviour
 
     void EnableHalo(bool enable)
     {
-        var myhalo = transform.FindChild("selector_halo").GetComponent("Halo");
         //var halo = GameObject.Find("selector_halo").GetComponent("Halo");
-        myhalo.GetType().GetProperty("enabled").SetValue(myhalo, enable, null);
+        var halo = transform.FindChild("selector_halo").GetComponent("Halo");
+        halo.GetType().GetProperty("enabled").SetValue(halo, enable, null);
     }
 
     void TempMovement()

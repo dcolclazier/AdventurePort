@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Assets.Code.Scripts
 {
-    public delegate void Click(int button, Vector3 mouse_position); 
+    public delegate void Click(int button, Vector3 mousePosition); 
     public class GameManager : MonoBehaviour
     {
 
@@ -19,21 +19,19 @@ namespace Assets.Code.Scripts
         public void Start()
         {
             CurrentState = new MainMenuState(this);
-            Debug.Log("Game Manager started.");
+            //Debug.Log("Game Manager started.");
         }
         public void Update ()
         {
             if (CurrentState != null) CurrentState.Update();
 
-            if(Input.GetMouseButtonDown(0)) OnClick(0, GetMousePosition());
-            if(Input.GetMouseButtonDown(1)) OnClick(1, GetMousePosition());
-            if(Input.GetMouseButtonDown(2)) OnClick(2, GetMousePosition());
+            if(Input.GetMouseButtonDown(0)) OnClick(0);
+            if(Input.GetMouseButtonDown(1)) OnClick(1);
+            if(Input.GetMouseButtonDown(2)) OnClick(2);
 
-            //while (Input.GetMouseButton(0))
-            //{
-            //    OnHeld(0, GetMousePosition());
-            //}
-            if(Input.GetMouseButton(1)) OnHeld(1,GetMousePosition());
+            if(Input.GetMouseButton(0)) OnHeld(0);
+            if(Input.GetMouseButton(1)) OnHeld(1);
+            if(Input.GetMouseButton(2)) OnHeld(2);
         }
 	
         // Update is called once per frame
@@ -44,17 +42,18 @@ namespace Assets.Code.Scripts
 
         private Vector3 GetMousePosition()
         {
-            return new Vector3(Input.mousePosition.x, Input.mousePosition.y, Input.mousePosition.z);
+            return Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x,Input.mousePosition.y,0));
+            //return new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0);
         }
 
-        public void OnClick(int button, Vector3 mousePosition)
+        public void OnClick(int button)
         {
-            if (MouseClicked != null) MouseClicked.Invoke(button, mousePosition);
+            if (MouseClicked != null) MouseClicked.Invoke(button, GetMousePosition());
         }
 
-        public void OnHeld(int button, Vector3 mousePosition)
+        public void OnHeld(int button)
         {
-            if (MouseHeld != null) MouseHeld.Invoke(button, mousePosition);
+            if (MouseHeld != null) MouseHeld.Invoke(button, GetMousePosition());
         }
     }
 }
