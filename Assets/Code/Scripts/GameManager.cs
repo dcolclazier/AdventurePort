@@ -1,8 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
+using System.Collections;
 using Assets.Code.States;
 using UnityEditor;
 using UnityEngine;
+using UnityEngineInternal;
 
 namespace Assets.Code.Scripts
 {
@@ -11,16 +12,21 @@ namespace Assets.Code.Scripts
     {
         public Texture2D GameBackground;
         public IGameState CurrentState { get; set; }
-        private CameraManager CameraManager { get; set; }
-        
+        public CameraManager CameraManager { get; set; }
+        public StackManager StackManager { get; set; }
+        public MouseHandler MouseManager {
+            get { return MouseHandler.Instance; }
+        }
         public void Start()
         {
             CameraManager = new CameraManager(this);
-            CurrentState = new MainMenuState(this);
+            //CurrentState = new MainMenuState(this);
+            StackManager = new StackManager(this);
         }
        
         public void Update ()
         {
+            MouseHandler.Instance.Update();
             if (CurrentState != null) CurrentState.Update();
         }
         public void OnGUI()

@@ -21,7 +21,7 @@ namespace Assets.Code.Scripts
 
         private void InitCameras()
         {
-            EventHandler.Instance.MouseHeld += MiddleMouseHeld;
+            MouseHandler.Instance.MouseHeld += MiddleMouseHeld;
         }
         private void MiddleMouseHeld(int button, Vector3 mouseposition)
         {

@@ -46,13 +46,19 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Code\Abstract\IBlock.cs" />
      <Compile Include="Assets\Code\Abstract\IGameState.cs" />
-     <Compile Include="Assets\Code\Scripts\EventHandler.cs" />
+     <Compile Include="Assets\Code\Delegates\Click.cs" />
+     <Compile Include="Assets\Code\Delegates\StackAction.cs" />
+     <Compile Include="Assets\Code\Entities\Player.cs" />
+     <Compile Include="Assets\Code\GameStack\Blocks\InfoBlock.cs" />
+     <Compile Include="Assets\Code\GameStack\GameStack.cs" />
+     <Compile Include="Assets\Code\Scripts\CameraManager.cs" />
      <Compile Include="Assets\Code\Scripts\GameManager.cs" />
-     <Compile Include="Assets\Code\Scripts\PlayerChar.cs" />
+     <Compile Include="Assets\Code\Scripts\MouseHandler.cs" />
+     <Compile Include="Assets\Code\Scripts\StackManager.cs" />
      <Compile Include="Assets\Code\States\MainMenuState.cs" />
      <Compile Include="Assets\Code\States\PlayingGameState.cs" />
-     <Compile Include="Assets\Code\States\WinGameState.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

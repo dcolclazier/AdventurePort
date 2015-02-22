@@ -3,7 +3,7 @@ using System.Collections;
 using Assets.Code.Scripts;
 using Assets.Code.States;
 
-public class PlayerChar : MonoBehaviour
+public class Player : MonoBehaviour
 {
     #region UnityFields
     public SpriteRenderer Sprite;
@@ -16,6 +16,10 @@ public class PlayerChar : MonoBehaviour
     private bool _currentlySelected;
     private bool currentlyMoving = false;
 
+    void Awake()
+    {
+        MouseHandler.Instance.Mouse3 += TestMouse3Clicked;
+    }
     void Start ()
 	{
 	    _manager = GameObject.Find("GameManager").GetComponent<GameManager>();
@@ -23,8 +27,10 @@ public class PlayerChar : MonoBehaviour
 	    _currentlySelected = false;
         transform.Translate(Random.Range(-2, 2), Random.Range(-2, 2),0);
 
-	    EventHandler.Instance.MouseClicked += LeftMouseClicked;
-        EventHandler.Instance.MouseHeld += RightMouseHeld;
+	    MouseHandler.Instance.MouseClicked += LeftMouseClicked;
+        MouseHandler.Instance.MouseHeld += RightMouseHeld;
+
+        
 
 	}
 
@@ -40,6 +46,12 @@ public class PlayerChar : MonoBehaviour
         MovePlayer(transform.position, mousePosition);
     }
 
+    private void TestMouse3Clicked(int value, Vector3 mousePosition)
+    {
+        if (!_currentlySelected || value != 3) return;
+        
+    }
+
     private void MovePlayer(Vector3 startPos, Vector3 endPos)
     {
         Transform.position = Vector3.Lerp(startPos, endPos,  PlayerSpeed/100*Time.deltaTime);
@@ -50,24 +62,15 @@ public class PlayerChar : MonoBehaviour
         TempMovement();
 	}
 
-    private void OnMouseDown()
+    void TestMove(Vector3 startPos, Vector3 endPos)
     {
-        _currentlySelected = true;        
+        
     }
 
-    void OnMouseOver()
-    {
-        _mouseOver = true;
-    }
-
-    private void OnMouseExit()
-    {
-       _mouseOver = false;
-    }
+    
 
     void EnableHalo(bool enable)
     {
-        //var halo = GameObject.Find("selector_halo").GetComponent("Halo");
         var halo = transform.FindChild("selector_halo").GetComponent("Halo");
         halo.GetType().GetProperty("enabled").SetValue(halo, enable, null);
     }
@@ -92,5 +95,17 @@ public class PlayerChar : MonoBehaviour
         {
             transform.Translate(-.5f, 0, 0);
         }
+    }
+    private void OnMouseDown()
+    {
+        _currentlySelected = true;
+    }
+    void OnMouseOver()
+    {
+        _mouseOver = true;
+    }
+    private void OnMouseExit()
+    {
+        _mouseOver = false;
     }
 }
