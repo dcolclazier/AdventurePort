@@ -7,11 +7,11 @@ using UnityEngine;
 
 namespace Assets.Code.States
 {
-    class StartScreenState : IGameState
+    class MainMenuState : IGameState
     {
         private readonly GameManager _manager;
 
-        public StartScreenState(GameManager manager)
+        public MainMenuState(GameManager manager)
         {
             _manager = manager;
         }

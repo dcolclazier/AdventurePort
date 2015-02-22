@@ -19,7 +19,7 @@ namespace Assets.Code.States
         public void Update()
         {
             if (Input.GetKeyDown(KeyCode.Escape))
-                _manager.CurrentState = new StartScreenState(_manager);
+                _manager.CurrentState = new MainMenuState(_manager);
         }
 
         public void Render()
@@ -28,5 +28,7 @@ namespace Assets.Code.States
                 _manager.GameBackground);
 
         }
+
+        
     }
 }

@@ -13,21 +13,25 @@ public class PlayerChar : MonoBehaviour {
 	    _manager = GameObject.Find("GameManager").GetComponent<GameManager>();
 	    _mouseOver = false;
 	    _currentlySelected = false;
+
+	    _manager.MouseClicked += LeftMouseClicked;
 	}
-	
-	// Update is called once per frame
+
+    private void LeftMouseClicked(int value)
+    {
+        if (!_mouseOver) _currentlySelected = false;
+    }
+
+    // Update is called once per frame
 	void Update ()
 	{
-	    EnableHalo(_mouseOver);
+	    EnableHalo(_mouseOver || _currentlySelected);
         TempMovement();
-
-
 	}
 
     private void OnMouseDown()
     {
-        _currentlySelected = true;
-        EnableHalo(true);
+        _currentlySelected = true;        
     }
 
     void OnMouseOver()
@@ -37,7 +41,7 @@ public class PlayerChar : MonoBehaviour {
 
     private void OnMouseExit()
     {
-       if(!_currentlySelected) _mouseOver = false;
+       _mouseOver = false;
     }
 
     void EnableHalo(bool enable)
@@ -48,6 +52,8 @@ public class PlayerChar : MonoBehaviour {
 
     void TempMovement()
     {
+        if (!_currentlySelected) return;
+
         if (Input.GetKeyDown(KeyCode.W))
         {
             transform.Translate(0, .5f, 0);
