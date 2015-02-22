@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace Assets.Code.States
 {
+    public delegate void Click(int button, Vector3 mousePosition); 
     public sealed class EventHandler : MonoBehaviour
     {
         private static EventHandler _instance;
@@ -21,7 +22,6 @@ namespace Assets.Code.States
             if (Input.GetMouseButton(1)) OnHeld(1);
             if (Input.GetMouseButton(2)) OnHeld(2);
         }
-
 
         public event Click MouseClicked;
         public void OnClick(int button)

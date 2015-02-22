@@ -5,21 +5,17 @@ using Assets.Code.States;
 
 public class PlayerChar : MonoBehaviour
 {
-
+    #region UnityFields
     public SpriteRenderer Sprite;
     public Transform Transform;
-
     public float PlayerSpeed;
+    #endregion
 
     private GameManager _manager;
     private bool _mouseOver;
     private bool _currentlySelected;
-    // Use this for initialization
- 
+    private bool currentlyMoving = false;
 
-    //lerping stuff test
-    
-    bool currentlyMoving = false;
     void Start ()
 	{
 	    _manager = GameObject.Find("GameManager").GetComponent<GameManager>();
@@ -41,18 +37,13 @@ public class PlayerChar : MonoBehaviour
     private void RightMouseHeld(int value, Vector3 mousePosition)
     {
         if (!_currentlySelected || value != 1) return;
-
-        //MovePlayer(transform.position, Camera.main.ScreenToWorldPoint(mousePosition));
         MovePlayer(transform.position, mousePosition);
     }
 
     private void MovePlayer(Vector3 startPos, Vector3 endPos)
     {
-        //Transform.position = Vector3.Lerp(startPos, new Vector3(endPos.x,endPos.y,0),  PlayerSpeed/100*Time.deltaTime);
         Transform.position = Vector3.Lerp(startPos, endPos,  PlayerSpeed/100*Time.deltaTime);
     }
-
-    // Update is called once per frame
 	void Update ()
 	{
 	    EnableHalo(_mouseOver || _currentlySelected);
