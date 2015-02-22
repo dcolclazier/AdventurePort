@@ -24,8 +24,7 @@ namespace Assets.Code.States
 
         public void Render()
         {
-            GUI.DrawTexture(new Rect(0,0, Screen.width, Screen.height),
-                _manager.StartScreenBackground);
+            
 
         }
     }

@@ -48,6 +48,7 @@
   <ItemGroup>
      <Compile Include="Assets\Code\Abstract\IGameState.cs" />
      <Compile Include="Assets\Code\Scripts\GameManager.cs" />
+     <Compile Include="Assets\Code\Scripts\PlayerChar.cs" />
      <Compile Include="Assets\Code\States\PlayingGameState.cs" />
      <Compile Include="Assets\Code\States\StartScreenState.cs" />
   </ItemGroup>

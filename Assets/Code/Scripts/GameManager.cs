@@ -9,10 +9,12 @@ namespace Assets.Code.Scripts
         public Texture2D StartScreenBackground;
         public Texture2D GameBackground;
         public IGameState CurrentState { get; set; }
+        public int PlayerSpeed;
 
         public void Start()
         {
             CurrentState = new StartScreenState(this);
+            Debug.Log("Game Manager started.");
         }
         public void Update ()
         {
