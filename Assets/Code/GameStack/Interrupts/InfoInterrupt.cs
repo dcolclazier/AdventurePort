@@ -9,10 +9,13 @@ namespace Assets.Code.GameStack.Interrupts
 {
     class InfoInterrupt : IInterrupt
     {
+        private readonly GameManager _manager;
         public bool Active { get; set; }
-        public InfoInterrupt()
+        public InfoInterrupt(GameManager manager)
         {
+            _manager = manager;
             Active = true;
+            _manager.StackManager.Interrupt += InterruptAction;
         }
 
         public void InterruptAction(IBlock stackBlock)

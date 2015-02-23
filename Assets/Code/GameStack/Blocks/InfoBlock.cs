@@ -1,3 +1,4 @@
+using Assets.Code.States;
 using UnityEngine;
 
 namespace Assets.Code.Scripts
@@ -5,6 +6,14 @@ namespace Assets.Code.Scripts
     public class InfoBlock : IBlock
     {
         private string _interruptMessage = "Not interrupted!";
+        private GameManager _manager;
+
+        public InfoBlock(GameManager manager)
+        {
+            _manager = manager;
+        }
+
+
         public string InterruptMessage
         {
             get { return _interruptMessage; }
