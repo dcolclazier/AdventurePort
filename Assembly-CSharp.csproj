@@ -53,7 +53,7 @@
      <Compile Include="Assets\Code\Entities\Player.cs" />
      <Compile Include="Assets\Code\GameStack\Blocks\InfoBlock.cs" />
      <Compile Include="Assets\Code\GameStack\GameStack.cs" />
-     <Compile Include="Assets\Code\GameStack\Interrupts\BasicInterrupt.cs" />
+     <Compile Include="Assets\Code\GameStack\Interrupts\InfoInterrupt.cs" />
      <Compile Include="Assets\Code\Scripts\CameraManager.cs" />
      <Compile Include="Assets\Code\Scripts\GameManager.cs" />
      <Compile Include="Assets\Code\Scripts\MouseHandler.cs" />

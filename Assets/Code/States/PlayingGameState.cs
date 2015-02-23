@@ -19,8 +19,8 @@ namespace Assets.Code.States
 
             var testStackBlock = new InfoBlock(_manager);
             _manager.StackManager.PushToStack(testStackBlock);
-
             var testStackBlockInterrupt = new InfoInterrupt(_manager);
+            _manager.StackManager.PopStack();
 
 
         }

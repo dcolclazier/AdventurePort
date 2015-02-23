@@ -19,9 +19,13 @@ namespace Assets.Code.Scripts
         }
         public void Start()
         {
-            CameraManager = new CameraManager(this);
-            CurrentState = new PlayingGameState(this);
             StackManager = new StackManager(this);
+            CameraManager = new CameraManager(this);
+
+
+
+            CurrentState = new PlayingGameState(this);
+            
         }
        
         public void Update ()
