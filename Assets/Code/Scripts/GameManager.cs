@@ -10,22 +10,19 @@ namespace Assets.Code.Scripts
     
     public class GameManager : MonoBehaviour
     {
+        
         public Texture2D GameBackground;
         public IGameState CurrentState { get; set; }
         public CameraManager CameraManager { get; set; }
-        public StackManager StackManager { get; set; }
-        public MouseHandler MouseManager {
-            get { return MouseHandler.Instance; }
+        public StackManager StackManager { get; private set; }
+        public void Awake()
+        {
+            StackManager = new StackManager();
+            CameraManager = new CameraManager(this);
         }
         public void Start()
         {
-            StackManager = new StackManager(this);
-            CameraManager = new CameraManager(this);
-
-
-
             CurrentState = new PlayingGameState(this);
-            
         }
        
         public void Update ()

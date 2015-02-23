@@ -17,11 +17,13 @@ namespace Assets.Code.States
             _manager = manager;
 
 
+            //Temp code to test stack operation
             var testStackBlock = new InfoBlock(_manager);
             _manager.StackManager.PushToStack(testStackBlock);
-            var testStackBlockInterrupt = new InfoInterrupt(_manager);
-            _manager.StackManager.PopStack();
 
+            var testStackBlockInterrupt = new InfoInterrupt(_manager);
+            testStackBlockInterrupt.Active = false;
+            _manager.StackManager.PopStack();
 
         }
 

@@ -43,6 +43,8 @@ public class Player : MonoBehaviour
     private void RightMouseHeld(int value, Vector3 mousePosition)
     {
         if (!_currentlySelected || value != 1) return;
+        Debug.Log("Drawing!!!");
+        PathTest.DrawPath(transform.position, mousePosition);
         MovePlayer(transform.position, mousePosition);
     }
 

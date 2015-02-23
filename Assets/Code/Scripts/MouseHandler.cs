@@ -27,8 +27,6 @@ namespace Assets.Code.States
             if (Input.GetMouseButtonUp(2)) OnRelease(2);
 
             if (Input.GetKeyUp(KeyCode.Mouse3)) OnMouse3(3);
-
-
         }
 
         public event Click Mouse3;
