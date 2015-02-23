@@ -28,7 +28,7 @@ namespace Assets.Code.Scripts
             if (button != 2) return;
 
             var moveDirection = new Vector3(-Input.GetAxis("Mouse X"), -Input.GetAxis("Mouse Y"), 0);
-            Camera.main.transform.position += moveDirection;
+            Main.transform.position += moveDirection;
         }
 
     }

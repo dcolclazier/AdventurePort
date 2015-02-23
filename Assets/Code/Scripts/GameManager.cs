@@ -17,11 +17,13 @@ namespace Assets.Code.Scripts
         public StackManager StackManager { get; private set; }
         public void Awake()
         {
-            StackManager = new StackManager();
-            CameraManager = new CameraManager(this);
+            
         }
         public void Start()
         {
+            StackManager = new StackManager();
+            Debug.Log("Creating camera...");
+            CameraManager = new CameraManager(this);
             CurrentState = new PlayingGameState(this);
         }
        

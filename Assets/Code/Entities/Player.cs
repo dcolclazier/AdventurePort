@@ -16,9 +16,19 @@ public class Player : MonoBehaviour
     private bool _currentlySelected;
     private bool currentlyMoving = false;
 
+
+    //test stuff
+    private int MoveDistance = 10;
+    public bool Pathing { get; private set; }
+
     void Awake()
     {
         MouseHandler.Instance.Mouse3 += TestMouse3Clicked;
+    
+        var line = gameObject.AddComponent<LineRenderer>();
+        line.useWorldSpace = true;
+        line.material = new Material(Shader.Find("Particles/Additive"));
+        line.SetColors(Color.white, Color.blue);
     }
     void Start ()
 	{
@@ -29,28 +39,49 @@ public class Player : MonoBehaviour
 
 	    MouseHandler.Instance.MouseClicked += LeftMouseClicked;
         MouseHandler.Instance.MouseHeld += RightMouseHeld;
+        MouseHandler.Instance.MouseReleased += RightMouseReleased;
 
-        
 
 	}
 
     private void LeftMouseClicked(int value, Vector3 mousePosition)
     {
-        if (!_mouseOver && value == 0) _currentlySelected = false;
-        currentlyMoving = true;
+        if (value != 0) return;
+        if (!_mouseOver)
+        {
+            _currentlySelected = false;
+            return;
+        }
     }
 
-    private void RightMouseHeld(int value, Vector3 mousePosition)
+    private void RightMouseReleased(int value, Vector3 mousePosition)
     {
-        if (!_currentlySelected || value != 1) return;
-        Debug.Log("Drawing!!!");
-        PathTest.DrawPath(transform.position, mousePosition);
-        MovePlayer(transform.position, mousePosition);
+        if (value != 1) return;
+        if (_mouseOver && Pathing) ResetPath();
     }
 
-    private void TestMouse3Clicked(int value, Vector3 mousePosition)
+    private void ResetPath()
     {
-        if (!_currentlySelected || value != 3) return;
+        if (!_mouseOver || !Pathing) return;
+
+        var path = gameObject.GetComponent<LineRenderer>();
+        path.SetVertexCount(0);
+        Pathing = false;
+    }
+
+    private void RightMouseHeld(int mouseButton, Vector3 mousePosition)
+    {
+        if (mouseButton != 1) return;
+        if (!_currentlySelected) return;
+
+        Pathing = true;
+        
+        FindObjectOfType<PathTest>().DrawLine(gameObject, mousePosition, Color.white, 5.25f);
+    }
+
+    private void TestMouse3Clicked(int mouseButton, Vector3 mousePosition)
+    {
+        if (!_currentlySelected || mouseButton != 3) return;
         
     }
 
@@ -61,13 +92,16 @@ public class Player : MonoBehaviour
 	void Update ()
 	{
 	    EnableHalo(_mouseOver || _currentlySelected);
-        TempMovement();
+	    EnablePathLine(_currentlySelected);
+
 	}
 
-    void TestMove(Vector3 startPos, Vector3 endPos)
+    private void EnablePathLine(bool currentlySelected)
     {
-        
+        var pathline = gameObject.GetComponent<LineRenderer>();
+        Pathing = pathline.enabled = currentlySelected;
     }
+
 
     
 
@@ -77,27 +111,27 @@ public class Player : MonoBehaviour
         halo.GetType().GetProperty("enabled").SetValue(halo, enable, null);
     }
 
-    void TempMovement()
-    {
-        if (!_currentlySelected) return;
+    //void TempMovement()
+    //{
+    //    if (!_currentlySelected) return;
 
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            transform.Translate(0, .5f, 0);
-        }
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            transform.Translate(0, -.5f, 0);
-        }
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            transform.Translate(.5f, 0, 0);
-        }
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            transform.Translate(-.5f, 0, 0);
-        }
-    }
+    //    if (Input.GetKeyDown(KeyCode.W))
+    //    {
+    //        transform.Translate(0, .5f, 0);
+    //    }
+    //    if (Input.GetKeyDown(KeyCode.S))
+    //    {
+    //        transform.Translate(0, -.5f, 0);
+    //    }
+    //    if (Input.GetKeyDown(KeyCode.D))
+    //    {
+    //        transform.Translate(.5f, 0, 0);
+    //    }
+    //    if (Input.GetKeyDown(KeyCode.A))
+    //    {
+    //        transform.Translate(-.5f, 0, 0);
+    //    }
+    //}
     private void OnMouseDown()
     {
         _currentlySelected = true;

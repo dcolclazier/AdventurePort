@@ -28,10 +28,4 @@ namespace Assets.Code.GameStack.Interrupts
             infoBlock.InterruptMessage = "You were interrupted, info block.";
         }
     }
-
-    public interface IInterrupt
-    {
-        bool Active { get; }
-        void InterruptAction(IBlock stackBlock);
-    }
 }

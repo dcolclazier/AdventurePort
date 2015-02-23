@@ -1,5 +1,5 @@
+using System.Security.Cryptography.X509Certificates;
 using UnityEditor;
-using UnityEngine;
 
 namespace Assets.Code.Scripts
 {
@@ -7,13 +7,5 @@ namespace Assets.Code.Scripts
     {
         void PreInterrupt();
         void PostInterrupt();
-    }
-}
-
-static class PathTest
-{
-    public static void DrawPath(Vector3 from, Vector3 to)
-    {
-        Debug.DrawLine(from,to,Color.white);
     }
 }
