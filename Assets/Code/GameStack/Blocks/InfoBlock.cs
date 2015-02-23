@@ -4,10 +4,11 @@ namespace Assets.Code.Scripts
 {
     public class InfoBlock : IBlock
     {
+        private string _interruptMessage = "Not interrupted!";
         public string InterruptMessage
         {
-            get { return "Not interrupted!"; }
-            set { InterruptMessage = value; }
+            get { return _interruptMessage; }
+            set { _interruptMessage = value; }
 
         }
 
