@@ -4,18 +4,20 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 using Assets.Code.Scripts;
+using Assets.Code.States;
 
 namespace Assets.Code.GameStack.Interrupts
 {
     class InfoInterrupt : IInterrupt
     {
-        private readonly GameManager _manager;
+        private readonly StackManager _stackManager;
         public bool Active { get; set; }
-        public InfoInterrupt(GameManager manager)
+        public InfoInterrupt(StackManager stackManager, bool active = true)
         {
-            _manager = manager;
-            Active = true;
-            _manager.StackManager.Interrupt += InterruptAction;
+            Active = active;
+            _stackManager = stackManager;
+            
+            stackManager.Interrupt += InterruptAction;
         }
 
         public void InterruptAction(IBlock stackBlock)
@@ -27,5 +29,6 @@ namespace Assets.Code.GameStack.Interrupts
 
             infoBlock.InterruptMessage = "You were interrupted, info block.";
         }
-    }
+
+        }
 }

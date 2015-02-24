@@ -46,19 +46,29 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Code\Abstract\Art.cs" />
      <Compile Include="Assets\Code\Abstract\IBlock.cs" />
      <Compile Include="Assets\Code\Abstract\IGameState.cs" />
+     <Compile Include="Assets\Code\Abstract\IInputEventHandler.cs" />
+     <Compile Include="Assets\Code\Abstract\MouseButton.cs" />
      <Compile Include="Assets\Code\Delegates\Click.cs" />
      <Compile Include="Assets\Code\Delegates\StackAction.cs" />
+     <Compile Include="Assets\Code\Entities\IEvent.cs" />
+     <Compile Include="Assets\Code\Entities\Path.cs" />
      <Compile Include="Assets\Code\Entities\Player.cs" />
+     <Compile Include="Assets\Code\EventHandlers\CameraIEH.cs" />
+     <Compile Include="Assets\Code\EventHandlers\PathIEH.cs" />
+     <Compile Include="Assets\Code\EventHandlers\PlayerIEH.cs" />
+     <Compile Include="Assets\Code\Events\InputEvent.cs" />
      <Compile Include="Assets\Code\GameStack\Blocks\InfoBlock.cs" />
      <Compile Include="Assets\Code\GameStack\GameStack.cs" />
      <Compile Include="Assets\Code\GameStack\Interrupts\IInterrupt.cs" />
      <Compile Include="Assets\Code\GameStack\Interrupts\InfoInterrupt.cs" />
      <Compile Include="Assets\Code\Scripts\CameraManager.cs" />
      <Compile Include="Assets\Code\Scripts\GameManager.cs" />
-     <Compile Include="Assets\Code\Scripts\MouseHandler.cs" />
-     <Compile Include="Assets\Code\Scripts\PathTest.cs" />
+     <Compile Include="Assets\Code\Scripts\PathPrefab.cs" />
+     <Compile Include="Assets\Code\Scripts\PrefabFactory.cs" />
+     <Compile Include="Assets\Code\Scripts\SelectorHalo.cs" />
      <Compile Include="Assets\Code\Scripts\StackManager.cs" />
      <Compile Include="Assets\Code\States\MainMenuState.cs" />
      <Compile Include="Assets\Code\States\PlayingGameState.cs" />
