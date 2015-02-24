@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using Assets.Code.Abstract.Interfaces;
+using Assets.Code.Delegates;
 
-namespace Assets.Code.Scripts
+namespace Assets.Code.GameStack
 {
     public class StackManager
     {

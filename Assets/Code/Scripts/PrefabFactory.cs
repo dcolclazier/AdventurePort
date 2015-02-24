@@ -1,3 +1,6 @@
+using Assets.Code.GameObjects.Path;
+using Assets.Code.GameObjects.Player;
+using Assets.Code.GameObjects.SelectorHalo;
 using UnityEngine;
 
 namespace Assets.Code.Scripts

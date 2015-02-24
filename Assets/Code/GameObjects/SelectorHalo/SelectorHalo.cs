@@ -1,41 +1,44 @@
-using Assets.Code.EventHandlers;
+using Assets.Code.GameObjects.SelectorHalo.Event_Handlers;
 using Assets.Code.Scripts;
 
-public class SelectorHalo
+namespace Assets.Code.GameObjects.SelectorHalo
 {
-    private SelectorHaloPrefab _haloPrefab;
-    //private readonly Player _player;
-    private readonly Player _player;
-    private HaloPlayerEventHandler _haloPlayerEventHandler;
-    private HaloInputEventHandler _haloInputHandler;
-
-    public SelectorHalo(Player player)
+    public class SelectorHalo
     {
-        _player = player;
-        _haloPrefab = PrefabFactory.Instance.CreateSelectorHalo(_player);
+        private SelectorHaloPrefab _haloPrefab;
+        //private readonly Player _player;
+        private readonly Player.Player _player;
+        private HaloPlayerEventHandler _haloPlayerEventHandler;
+        private HaloInputEventHandler _haloInputHandler;
 
-        _haloInputHandler = new HaloInputEventHandler(this);
-        _haloPlayerEventHandler = new HaloPlayerEventHandler(this, _haloPrefab);
+        public SelectorHalo(Player.Player player)
+        {
+            _player = player;
+            _haloPrefab = PrefabFactory.Instance.CreateSelectorHalo(_player);
+
+            _haloInputHandler = new HaloInputEventHandler(this);
+            _haloPlayerEventHandler = new HaloPlayerEventHandler(this, _haloPrefab);
         
-        _haloPlayerEventHandler.Initialize();
-        _haloInputHandler.Initialize();
-    }
+            _haloPlayerEventHandler.Initialize();
+            _haloInputHandler.Initialize();
+        }
 
-    public void CreateHalo()
-    {
-        _haloPrefab = _haloPrefab = PrefabFactory.Instance.CreateSelectorHalo(_player);
+        public void CreateHalo()
+        {
+            _haloPrefab = _haloPrefab = PrefabFactory.Instance.CreateSelectorHalo(_player);
 
-    }
+        }
 
-    public void Destroy()
-    {
-        _player.Halo = null;
-        _haloInputHandler.ClearEvents();
-        _haloInputHandler = null;
+        public void Destroy()
+        {
+            _player.Halo = null;
+            _haloInputHandler.ClearEvents();
+            _haloInputHandler = null;
 
-        _haloPlayerEventHandler.ClearEvents();
-        _haloPlayerEventHandler = null;
+            _haloPlayerEventHandler.ClearEvents();
+            _haloPlayerEventHandler = null;
 
-        _haloPrefab.Destroy();
+            _haloPrefab.Destroy();
+        }
     }
 }

@@ -1,7 +1,9 @@
-using Assets.Code.States;
+using Assets.Code.Abstract;
+using Assets.Code.Abstract.Interfaces;
+using Assets.Code.Events;
 using UnityEngine;
 
-namespace Assets.Code.Scripts
+namespace Assets.Code.GameObjects.Cameras.Event_Handlers
 {
     public class CameraInputEventHandler : IInputEventHandler
     {
@@ -10,57 +12,14 @@ namespace Assets.Code.Scripts
         {
             _cameraManager = cameraManager;
         }
-
         public void Initialize()
         {
             InputEvent.Triggers.MouseHeld += MiddleMouseHeld;
         }
-
         public void ClearEvents()
         {
             InputEvent.Triggers.MouseHeld -= MiddleMouseHeld;
         }
-
-        public void RightMouseReleased(MouseButton button, Vector3 mousePosition)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void LeftMouseReleased(MouseButton button, Vector3 mousePosition)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void MiddleMouseReleased(MouseButton button, Vector3 mousePosition)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void RightMouseClicked(MouseButton button, Vector3 mousePosition)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void LeftMouseClicked(MouseButton button, Vector3 mousePosition)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void MiddleMouseClicked(MouseButton button, Vector3 mousePosition)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void RightMouseHeld(MouseButton button, Vector3 mousePosition)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void LeftMouseHeld(MouseButton button, Vector3 mousePosition)
-        {
-            throw new System.NotImplementedException();
-        }
-
         public void MiddleMouseHeld(MouseButton button, Vector3 mouseposition)
         {
             if (button != MouseButton.Middle) return;

@@ -1,6 +1,9 @@
-public interface IPlayerEventHandler
+namespace Assets.Code.Abstract.Interfaces
 {
-    void Initialize();
-    void ClearEvents();
+    public interface IPlayerEventHandler
+    {
+        void Initialize();
+        void ClearEvents();
 
+    }
 }

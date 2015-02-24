@@ -2,6 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Assets.Code.Abstract.Interfaces;
+using Assets.Code.Events;
+using Assets.Code.GameObjects.Cameras;
+using Assets.Code.GameStack;
+using Assets.Code.GameStack.Blocks;
 using Assets.Code.GameStack.Interrupts;
 using Assets.Code.Scripts;
 
@@ -26,7 +31,7 @@ namespace Assets.Code.States
             var testInterrupt = new InfoInterrupt(StackManager) {Active = false};
             testInterrupt.Active = true;
             StackManager.PopStack();
-
+            //end temp code
         }
 
         public void Update()
@@ -39,7 +44,5 @@ namespace Assets.Code.States
         {
             
         }
-
-
     }
 }

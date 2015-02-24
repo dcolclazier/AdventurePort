@@ -1,6 +1,7 @@
-using Assets.Code.Scripts;
+using Assets.Code.Abstract.Interfaces;
+using Assets.Code.Events;
 
-namespace Assets.Code.EventHandlers
+namespace Assets.Code.GameObjects.SelectorHalo.Event_Handlers
 {
     public class HaloPlayerEventHandler : IPlayerEventHandler
     {
@@ -26,15 +27,15 @@ namespace Assets.Code.EventHandlers
             PlayerEvent.Triggers.MouseExitedPlayerSpace -= MouseExitedPlayerSpace;        
         }
 
-        private void MouseExitedPlayerSpace(Player player)
+        private void MouseExitedPlayerSpace(Player.Player player)
         {
             if (_haloPrefab != null && !player.Selected) _halo.Destroy();
         }
 
-        public void MouseEnteredPlayerSpace(Player player)
+        public void MouseEnteredPlayerSpace(Player.Player player)
         {
-            if (_haloPrefab == null && !player.Selected) 
-                _haloPrefab = PrefabFactory.Instance.CreateSelectorHalo(player);
+            if (_haloPrefab == null && !player.Selected) _halo.CreateHalo();
+
         }
    
     }

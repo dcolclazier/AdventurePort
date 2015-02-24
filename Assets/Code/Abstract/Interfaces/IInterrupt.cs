@@ -1,6 +1,4 @@
-﻿using Assets.Code.Scripts;
-
-namespace Assets.Code.GameStack.Interrupts
+﻿namespace Assets.Code.Abstract.Interfaces
 {
     public interface IInterrupt
     {

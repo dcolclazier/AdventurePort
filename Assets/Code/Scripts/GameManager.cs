@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using Assets.Code.Abstract.Interfaces;
 using Assets.Code.States;
 using UnityEditor;
 using UnityEngine;
@@ -16,10 +17,8 @@ namespace Assets.Code.Scripts
         
         public void Start()
         {
-            
             CurrentState = new PlayingGameState(this);
         }
-       
         public void Update ()
         {
             if (CurrentState != null) CurrentState.Update();

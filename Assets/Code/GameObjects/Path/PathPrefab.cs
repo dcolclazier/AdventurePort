@@ -1,47 +1,46 @@
-using System;
 using System.Collections.Generic;
-using System.Collections;
-using Assets.Code.States;
+using Assets.Code.Abstract;
+using Assets.Code.Abstract.Interfaces;
 using UnityEngine;
-using Object = UnityEngine.Object;
 
-public class PathPrefab : MonoBehaviour, IPrefab
+namespace Assets.Code.GameObjects.Path
 {
-    private LineRenderer _pathLine;
-    public bool Visible { get { return _pathLine.enabled; } set { _pathLine.enabled = value; } }
-    public void Initialize()
+    public class PathPrefab : MonoBehaviour, IPrefab
     {
-        
-    }
-    public void Initialize(Player player)
-    {
-        gameObject.transform.parent = player.transform;
-        Initialize();
-    }
-    public void Awake()
-    {
-        _pathLine = gameObject.AddComponent<LineRenderer>();
-        _pathLine.useWorldSpace = true;
-        _pathLine.sharedMaterial = new Material(Shader.Find("Particles/Additive"));   
-    }
+        private LineRenderer _pathLine;
+        public bool Visible { get { return _pathLine.enabled; } set { _pathLine.enabled = value; } }
+        public void Initialize(Player.Player player)
+        {
+            gameObject.transform.parent = player.transform;
+            
+        }
+        public void Awake()
+        {
+            _pathLine = gameObject.AddComponent<LineRenderer>();
+            _pathLine.useWorldSpace = true;
+            _pathLine.sharedMaterial = new Material(Shader.Find("Particles/Additive"));   
+        }
 
-    public void Draw(List<Vector3> nodes)
-    {
-        Art.DrawLine(_pathLine, nodes);
-    }
+        public void Draw(List<Vector3> nodes)
+        {
+            Art.DrawLine(_pathLine, nodes);
+        }
 
-    public void Destroy()
-    {
-        Destroy(gameObject);
-    }
+        public void Destroy()
+        {
+            _pathLine.sharedMaterial = null;
+            _pathLine = null;
+            Destroy(gameObject);
+        }
 
-    public void Resize(int size)
-    {
-        _pathLine.SetVertexCount(size);
-    }
+        public void Resize(int size)
+        {
+            _pathLine.SetVertexCount(size);
+        }
 
 
  
+    }
 }
 
 

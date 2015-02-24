@@ -1,4 +1,7 @@
-public interface IEvent
+namespace Assets.Code.Abstract.Interfaces
 {
-    void Update();
+    public interface IEvent
+    {
+        void Update();
+    }
 }

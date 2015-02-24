@@ -1,4 +1,4 @@
-namespace Assets.Code.States
+namespace Assets.Code.Abstract
 {
     public enum MouseButton
     {

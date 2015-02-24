@@ -1,7 +1,8 @@
-using Assets.Code.States;
+using Assets.Code.Abstract;
+using Assets.Code.Abstract.Interfaces;
 using UnityEngine;
 
-namespace Assets.Code.EventHandlers
+namespace Assets.Code.GameObjects.SelectorHalo.Event_Handlers
 {
     public class HaloInputEventHandler : IInputEventHandler
     {

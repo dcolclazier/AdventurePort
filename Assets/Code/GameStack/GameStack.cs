@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Assets.Code.Abstract.Interfaces;
 
-namespace Assets.Code.Scripts
+namespace Assets.Code.GameStack
 {
     public class GameStack
     {

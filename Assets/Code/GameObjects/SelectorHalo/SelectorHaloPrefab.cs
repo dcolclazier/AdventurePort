@@ -1,37 +1,25 @@
-using System.Security.Cryptography.X509Certificates;
-using Assets.Code.States;
+using Assets.Code.Abstract.Interfaces;
 using UnityEngine;
 
-public class SelectorHaloPrefab : MonoBehaviour, IPrefab
+namespace Assets.Code.GameObjects.SelectorHalo
 {
-    private Player _player;
+    public class SelectorHaloPrefab : MonoBehaviour, IPrefab
+    {
+        private Player.Player _player;
 
-    void Start()
-    {
-        gameObject.transform.parent = _player.transform;
-    }
-
-    void Awake()
-    {
-        
-    }
-
-    void Update()
-    {
-        if (_player == null) return;
-        gameObject.transform.position = _player.transform.position;
-    }
-    public void Initialize()
-    {
-        
-    }
-    public void Initialize(Player player)
-    {
-        _player = player;
-    }
-
-    public void Destroy()
-    {
-        Destroy(gameObject);
+        void Update()
+        {
+            if (_player == null) return;
+            gameObject.transform.position = _player.transform.position;
+        }
+        public void Initialize(Player.Player player)
+        {
+            _player = player;
+            gameObject.transform.parent = _player.transform;
+        }
+        public void Destroy()
+        {
+            Destroy(gameObject);
+        }
     }
 }

@@ -1,4 +1,4 @@
-namespace Assets.Code.Scripts
+namespace Assets.Code.Abstract.Interfaces
 {
     public interface IGameState
     {

@@ -1,7 +1,8 @@
-using Assets.Code.States;
+using Assets.Code.Abstract.Interfaces;
+using Assets.Code.Scripts;
 using UnityEngine;
 
-namespace Assets.Code.Scripts
+namespace Assets.Code.GameStack.Blocks
 {
     public class InfoBlock : IBlock
     {

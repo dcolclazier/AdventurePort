@@ -1,4 +1,7 @@
-public interface IGameObject
+namespace Assets.Code.Abstract.Interfaces
 {
-    void Destroy();
+    public interface IGameObject
+    {
+        void Destroy();
+    }
 }

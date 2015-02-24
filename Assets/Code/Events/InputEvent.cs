@@ -1,7 +1,9 @@
-using Assets.Code.Scripts;
+using Assets.Code.Abstract;
+using Assets.Code.Abstract.Interfaces;
+using Assets.Code.Delegates;
 using UnityEngine;
 
-namespace Assets.Code.States
+namespace Assets.Code.Events
 {
     public sealed class InputEvent : IEvent 
     {
