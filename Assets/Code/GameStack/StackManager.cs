@@ -9,7 +9,7 @@ namespace Assets.Code.Scripts
         //public static StackManager Instance { get { return _instance ?? new StackManager(); } }
         private GameStack Stack { get; set; }
 
-        public event StackAction Interrupt;
+        public event StackTrigger Interrupt;
 
         public StackManager()
         {

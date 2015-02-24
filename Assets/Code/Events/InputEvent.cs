@@ -25,19 +25,19 @@ namespace Assets.Code.States
             if (Input.GetMouseButtonUp(2)) OnRelease(MouseButton.Middle);
         }
 
-        public event Click MouseReleased;
+        public event ClickTrigger MouseReleased;
         private void OnRelease(MouseButton button)
         {
             if(MouseReleased != null) MouseReleased.Invoke(button, GetMousePosition());
         }
 
-        public event Click MouseClicked;
+        public event ClickTrigger MouseClicked;
         private void OnClick(MouseButton button)
         {
             if (MouseClicked != null) MouseClicked.Invoke(button, GetMousePosition());
         }
 
-        public event Click MouseHeld;
+        public event ClickTrigger MouseHeld;
         private void OnHold(MouseButton button)
         {
             if (MouseHeld != null) MouseHeld.Invoke(button, GetMousePosition());

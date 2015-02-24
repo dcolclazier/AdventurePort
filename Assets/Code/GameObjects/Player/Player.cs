@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.ComponentModel;
+using Assets.Code.EventHandlers;
 using Assets.Code.Scripts;
 using Assets.Code.States;
 
@@ -11,21 +12,19 @@ public class Player : MonoBehaviour
     //public Transform Transform;
     public float PlayerSpeed;
     #endregion
-
+    
     public bool Moving { get; set; }
-    public bool Pathing { get; private set; }
-    private bool _selected;
-    public bool Selected
-    {
-        get { return _selected; }
-        set
-        {
-            if(!value) 
-                if (SelectorHalo != null) SelectorHalo.Clear();
-            _selected = value;
-        } 
-    }
-
+    //public bool Selected
+    //{
+    //    get { return _selected; }
+    //    set
+    //    {
+    //        if(!value) 
+    //            if (SelectorHaloPrefab != null) SelectorHaloPrefab.Destroy();
+    //        _selected = value;
+    //    } 
+    //}   
+    public bool Selected { get; set; }
     public bool CanMove { get; set; }
     public bool MouseOver { get; set; }
     public Vector3 Position { get { return gameObject.transform.position; } }
@@ -33,20 +32,17 @@ public class Player : MonoBehaviour
     //test stuff
     public int MoveDistance { get; set; }
     public Path Path { get; set; }
-    public SelectorHalo SelectorHalo { get; set; }
-    
+
+    public SelectorHalo Halo { get; set; }
+ 
     void Awake()
     {
-        var iehManager = new PlayerIEH(this);
+        var inputEventHandler = new PlayerInputEventHandler(this);
+        inputEventHandler.Initialize();
+        
         Path = null;
-
         MoveDistance = 10;
         CanMove = true;
-
-        var line = gameObject.AddComponent<LineRenderer>();
-        line.useWorldSpace = true;
-        line.material = new Material(Shader.Find("Particles/Additive"));
-        line.SetColors(Color.white, Color.blue);
     }
     void Start ()
 	{
@@ -68,10 +64,14 @@ public class Player : MonoBehaviour
     void OnMouseOver()
     {
         MouseOver = true;
-        if (SelectorHalo == null) SelectorHalo = PrefabFactory.Instance.CreateSelectorHalo(this);
+        PlayerEvent.Triggers.OnMouseEntered(this);
+
+        //should this go somewhere else?
+        if (Halo == null) Halo = new SelectorHalo(this);
     }
     private void OnMouseExit()
     {
         MouseOver = false;
+        PlayerEvent.Triggers.OnMouseLeft(this);
     }
 }

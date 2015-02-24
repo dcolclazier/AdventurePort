@@ -14,19 +14,20 @@ namespace Assets.Code.Scripts
             Instance = this;
         }
 
-        public SelectorHalo CreateSelectorHalo(Player player)
+        public SelectorHaloPrefab CreateSelectorHalo(Player player)
         {
             var haloPrefab = (GameObject) Instantiate(Resources.Load("Prefabs/SelectorHaloPrefab"));
-            var halo = haloPrefab.GetComponent<SelectorHalo>();
+            var halo = haloPrefab.GetComponent<SelectorHaloPrefab>();
             halo.Initialize(player);
             return halo;
         }
         
-        public PathPrefab CreatePathPrefab()
+        public PathPrefab CreatePathPrefab(Player player)
         {
-            var pathPrefab = (GameObject)Instantiate(Resources.Load("Prefabs/PathPrefab"));
-            return (PathPrefab) pathPrefab.GetComponent(typeof (PathPrefab));
-        
+            var pathObject = (GameObject)Instantiate(Resources.Load("Prefabs/PathPrefab"));
+            var pathPrefab = (PathPrefab) pathObject.GetComponent(typeof (PathPrefab));
+            pathPrefab.Initialize(player);
+            return pathPrefab;
         }
     }
 }

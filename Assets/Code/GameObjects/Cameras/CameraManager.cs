@@ -5,14 +5,14 @@ namespace Assets.Code.Scripts
 
     public class CameraManager
     {
-        private CameraIEH _inputEventHandler;
+        private CameraInputEventHandler _inputEventHandler;
         public Camera Main { get; private set; }
         public Camera Backup { get; private set; }
 
         public CameraManager()
         {
-            _inputEventHandler = new CameraIEH(this);
-
+            _inputEventHandler = new CameraInputEventHandler(this);
+            _inputEventHandler.Initialize();
             Main = Camera.main;
             Backup = null; // Refactor as necessary.
             

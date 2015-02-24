@@ -3,10 +3,10 @@ using UnityEngine;
 
 namespace Assets.Code.Scripts
 {
-    public class CameraIEH : IInputEventHandler
+    public class CameraInputEventHandler : IInputEventHandler
     {
-        private CameraManager _cameraManager;
-        public CameraIEH(CameraManager cameraManager)
+        private readonly CameraManager _cameraManager;
+        public CameraInputEventHandler(CameraManager cameraManager)
         {
             _cameraManager = cameraManager;
         }
@@ -14,6 +14,11 @@ namespace Assets.Code.Scripts
         public void Initialize()
         {
             InputEvent.Triggers.MouseHeld += MiddleMouseHeld;
+        }
+
+        public void ClearEvents()
+        {
+            InputEvent.Triggers.MouseHeld -= MiddleMouseHeld;
         }
 
         public void RightMouseReleased(MouseButton button, Vector3 mousePosition)
