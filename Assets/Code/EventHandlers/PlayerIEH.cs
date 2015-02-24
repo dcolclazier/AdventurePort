@@ -18,13 +18,13 @@ public class PlayerIEH : IInputEventHandler
     public void Initialize()
     {
         InputEvent.Triggers.MouseClicked += LeftMouseClicked;
-        InputEvent.Triggers.MouseHeld += RightMouseHeld;
+        //InputEvent.Triggers.MouseHeld += RightMouseHeld;
         //InputEvent.Triggers.MouseHeld += LeftMouseHeld;
         //InputEvent.Triggers.MouseReleased += LeftMouseReleased;
 
         InputEvent.Triggers.MouseClicked += RightMouseClicked;
         //InputEvent.Triggers.MouseHeld += RightMouseHeld;
-        InputEvent.Triggers.MouseReleased += RightMouseReleased;
+        //InputEvent.Triggers.MouseReleased += RightMouseReleased;
     }
 
     public void RightMouseReleased(MouseButton button, Vector3 mousePosition)
@@ -60,7 +60,6 @@ public class PlayerIEH : IInputEventHandler
     public void LeftMouseClicked(MouseButton button, Vector3 mouseposition)
     {
         if (button != MouseButton.Left) return;
-        Debug.Log("Player IEH: Left Mouse Button Clicked.");
 
         if (_player.Selected && !_player.MouseOver) _player.Selected = false;
         if (!_player.Selected && _player.MouseOver) _player.Selected = true;
@@ -74,8 +73,6 @@ public class PlayerIEH : IInputEventHandler
     public void RightMouseHeld(MouseButton button, Vector3 mousePosition)
     {
         if (button != MouseButton.Right) return;
-        Debug.Log("Player IEH: Right Mouse Button Held.");
-
     }
 
     

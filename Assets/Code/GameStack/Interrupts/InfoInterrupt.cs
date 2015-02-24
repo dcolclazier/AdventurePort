@@ -11,21 +11,30 @@ namespace Assets.Code.GameStack.Interrupts
     class InfoInterrupt : IInterrupt
     {
         private readonly StackManager _stackManager;
-        public bool Active { get; set; }
+        private bool _active;
+
+        public bool Active
+        {
+            get { return _active; }
+            set
+            {
+                if (value) _stackManager.Interrupt += InterruptAction;
+                else _stackManager.Interrupt -= InterruptAction;
+                _active = value;
+            }
+        }
         public InfoInterrupt(StackManager stackManager, bool active = true)
         {
-            Active = active;
-            _stackManager = stackManager;
             
-            stackManager.Interrupt += InterruptAction;
+            _stackManager = stackManager;
+            Active = active;
         }
 
         public void InterruptAction(IBlock stackBlock)
         {
-            if (!Active) return;
-
             var infoBlock = stackBlock as InfoBlock;
             if (infoBlock == null) return;
+
 
             infoBlock.InterruptMessage = "You were interrupted, info block.";
         }

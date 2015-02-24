@@ -8,7 +8,7 @@ using Assets.Code.States;
 public class Player : MonoBehaviour
 {
     #region UnityFields
-    public Transform Transform;
+    //public Transform Transform;
     public float PlayerSpeed;
     #endregion
 
@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
     public bool Selected { get; set; }
     public bool CanMove { get; set; }
     public bool MouseOver { get; set; }
+    public Vector3 Position { get { return gameObject.transform.position; } }
 
     //test stuff
     public int MoveDistance { get; set; }
@@ -48,7 +49,7 @@ public class Player : MonoBehaviour
     {
         if (!CanMove) return;
 
-        Transform.position = Vector3.Lerp(startPos, endPos,  PlayerSpeed/100*Time.deltaTime);
+        gameObject.transform.position = Vector3.Lerp(startPos, endPos,  PlayerSpeed/100*Time.deltaTime);
     }
 	void Update ()
 	{

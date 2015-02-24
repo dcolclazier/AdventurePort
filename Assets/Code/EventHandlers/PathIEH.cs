@@ -56,7 +56,7 @@ public class PathIEH : IInputEventHandler
     {
         if (button != MouseButton.Right) return;
 
-        if (_player.Selected && _player.CanMove)
+        if (_player.Selected && _player.CanMove && !_player.MouseOver)
         {
             _path.UpdateNodes(mousePosition);
             _path.Draw(true);           

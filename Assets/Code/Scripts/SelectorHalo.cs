@@ -16,5 +16,6 @@ class SelectorHalo : MonoBehaviour
         var halo = gameObject.GetComponent("Halo");
         halo.GetType().GetProperty("enabled").SetValue(halo, enable, null);
     }
+
     
 }
