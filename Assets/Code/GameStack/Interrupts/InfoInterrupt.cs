@@ -23,7 +23,7 @@ namespace Assets.Code.GameStack.Interrupts
                 _active = value;
             }
         }
-        public InfoInterrupt(StackManager stackManager, bool active = true)
+        public InfoInterrupt(StackManager stackManager, bool active = false)
         {
             
             _stackManager = stackManager;

@@ -61,7 +61,11 @@ public class PlayerIEH : IInputEventHandler
     {
         if (button != MouseButton.Left) return;
 
-        if (_player.Selected && !_player.MouseOver) _player.Selected = false;
+        if (_player.Selected && !_player.MouseOver)
+        {
+            if(_player.SelectorHalo != null) _player.SelectorHalo.Clear();
+            _player.Selected = false;
+        }
         if (!_player.Selected && _player.MouseOver) _player.Selected = true;
     }
 

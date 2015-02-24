@@ -1,15 +1,25 @@
 using UnityEngine;
 
-class SelectorHalo : MonoBehaviour
+public class SelectorHalo : MonoBehaviour
 {
-    private Player _myPlayer;
+    private Player _player;
+
     void Start()
     {
-        _myPlayer = GetComponentInParent<Player>();
+        
+    }
+
+    public void Initialize(Player player)
+    {
+        _player = player;
+        gameObject.transform.parent = player.transform;
+        gameObject.transform.position = player.transform.position;
     }
     void Update()
     {
-        EnableHalo(_myPlayer.MouseOver || _myPlayer.Selected);
+        if (_player == null) return;
+
+        EnableHalo(_player.MouseOver || _player.Selected);
     }
     private void EnableHalo(bool enable)
     {
@@ -17,5 +27,9 @@ class SelectorHalo : MonoBehaviour
         halo.GetType().GetProperty("enabled").SetValue(halo, enable, null);
     }
 
-    
+
+    public void Clear()
+    {
+        Destroy(gameObject);
+    }
 }

@@ -9,11 +9,11 @@ namespace Assets.Code.States
 {
     class MainMenuState : IGameState
     {
-        private readonly GameManager _manager;
+        //private readonly GameManager _manager;
 
         public MainMenuState(GameManager manager)
         {
-            _manager = manager;
+            //_manager = manager;
         }
 
         public void Update()

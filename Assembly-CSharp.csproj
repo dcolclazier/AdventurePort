@@ -69,6 +69,7 @@
      <Compile Include="Assets\Code\Scripts\PathPrefab.cs" />
      <Compile Include="Assets\Code\Scripts\PrefabFactory.cs" />
      <Compile Include="Assets\Code\Scripts\SelectorHalo.cs" />
+     <Compile Include="Assets\Code\Scripts\SelectorHaloPrefab.cs" />
      <Compile Include="Assets\Code\Scripts\StackManager.cs" />
      <Compile Include="Assets\Code\States\MainMenuState.cs" />
      <Compile Include="Assets\Code\States\PlayingGameState.cs" />

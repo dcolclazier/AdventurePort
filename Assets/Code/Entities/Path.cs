@@ -31,7 +31,7 @@ public class Path
 
     public void Draw(bool visible)
     {
-        if (_pathPrefab == null) _pathPrefab = PrefabFactory.Instance.CreatePathPrefab(_player);
+        if (_pathPrefab == null) _pathPrefab = PrefabFactory.Instance.CreatePathPrefab();
         
         Visible = visible;
         _pathPrefab.Draw(_nodes);

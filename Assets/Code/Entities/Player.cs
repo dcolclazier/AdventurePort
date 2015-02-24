@@ -14,7 +14,18 @@ public class Player : MonoBehaviour
 
     public bool Moving { get; set; }
     public bool Pathing { get; private set; }
-    public bool Selected { get; set; }
+    private bool _selected;
+    public bool Selected
+    {
+        get { return _selected; }
+        set
+        {
+            if(!value) 
+                if (SelectorHalo != null) SelectorHalo.Clear();
+            _selected = value;
+        } 
+    }
+
     public bool CanMove { get; set; }
     public bool MouseOver { get; set; }
     public Vector3 Position { get { return gameObject.transform.position; } }
@@ -22,13 +33,11 @@ public class Player : MonoBehaviour
     //test stuff
     public int MoveDistance { get; set; }
     public Path Path { get; set; }
+    public SelectorHalo SelectorHalo { get; set; }
     
-
-    private PlayerIEH _iehManager;
-
     void Awake()
     {
-        _iehManager = new PlayerIEH(this);
+        var iehManager = new PlayerIEH(this);
         Path = null;
 
         MoveDistance = 10;
@@ -59,6 +68,7 @@ public class Player : MonoBehaviour
     void OnMouseOver()
     {
         MouseOver = true;
+        if (SelectorHalo == null) SelectorHalo = PrefabFactory.Instance.CreateSelectorHalo(this);
     }
     private void OnMouseExit()
     {

@@ -7,16 +7,23 @@ namespace Assets.Code.Scripts
         public static PrefabFactory Instance { get; private set; }
 
         public GameObject PathPrefab;
+        public GameObject SelectorHaloPrefab;
 
         public void Awake()
         {
             Instance = this;
         }
-        
-        public PathPrefab CreatePathPrefab(Player player)
-        {
-            //if (player.Path != null) return player.Path.PathPrefab;
 
+        public SelectorHalo CreateSelectorHalo(Player player)
+        {
+            var haloPrefab = (GameObject) Instantiate(Resources.Load("Prefabs/SelectorHaloPrefab"));
+            var halo = haloPrefab.GetComponent<SelectorHalo>();
+            halo.Initialize(player);
+            return halo;
+        }
+        
+        public PathPrefab CreatePathPrefab()
+        {
             var pathPrefab = (GameObject)Instantiate(Resources.Load("Prefabs/PathPrefab"));
             return (PathPrefab) pathPrefab.GetComponent(typeof (PathPrefab));
         
