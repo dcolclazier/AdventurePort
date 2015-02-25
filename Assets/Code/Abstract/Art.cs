@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Assets.Code.GameObjects._Path;
 using UnityEngine;
 
 namespace Assets.Code.Abstract
@@ -13,31 +14,11 @@ namespace Assets.Code.Abstract
         //    _circleRenderer.gameObject.name = "Pathing Circle";
         //}
 
-        private static float AngleTest(Vector3 pos1, Vector3 pos2)
+        public static float AngleTest(Vector3 destination, Vector3 origin)
         {
-            var angle = Mathf.Atan2(pos2.y, pos2.x) - Mathf.Atan2(pos1.y, pos1.x);
-            var heading = pos2 - pos1;
-            Debug.Log("Heading: x: " + heading.x + ", y: " + heading.y + ", z: " + heading.z);
-            if (Math.Abs(angle) > 180) angle -= (float)(360.0 * Math.Sign(angle));
+            var angle = (180 / Math.PI) * Mathf.Atan2(origin.y - destination.y, origin.x - destination.x);
 
-            return angle;
-        
-        }
-
-        public static void DrawLine(LineRenderer lr, Vector3 from, Vector3 to, Color color, float toOffset)
-        {
-            //var lineRenderer = goFrom.GetComponent<LineRenderer>();
-
-            var angleToDest = AngleTest(from,to);
-            //var angleToDest = Vector2.Angle(to, goFrom.transform.position);
-            Debug.Log("Angle: " + angleToDest);
-
-            lr.SetVertexCount(2);
-            lr.SetWidth(.0125f,.0125f);
-            lr.SetColors(color,color);
-        
-            lr.SetPosition(0,from);
-            lr.SetPosition(1,PointOnCircle(.25f,angleToDest,to));
+            return (float)angle;
         
         }
 
@@ -45,6 +26,8 @@ namespace Assets.Code.Abstract
         {
             lr.SetVertexCount(nodes.Count);
             lr.SetWidth(width,width);
+
+            
             var i = 0;
             foreach (var node in nodes)
             {
@@ -54,6 +37,7 @@ namespace Assets.Code.Abstract
 
         }
 
+      
         //smaller the precision, the more vertices in circle.
         public static void DrawCircle(LineRenderer lr, Vector3 center, float radius, float precision = .05f, float width = .025f)
         {
@@ -86,6 +70,5 @@ namespace Assets.Code.Abstract
 
             return new Vector3(x, y,0);
         }
-
     }
 }

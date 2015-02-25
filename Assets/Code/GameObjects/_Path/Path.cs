@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Assets.Code.Abstract;
 using Assets.Code.Abstract.Interfaces;
 using Assets.Code.GameObjects._Path.Event_Handlers;
 using Assets.Code.GameObjects._Player;
@@ -31,8 +32,6 @@ namespace Assets.Code.GameObjects._Path
 
         public void Draw(bool visible)
         {
-        
-        
             Visible = visible;
             _pathPrefab.Draw(_nodes);
         }
@@ -41,7 +40,17 @@ namespace Assets.Code.GameObjects._Path
         {
             //temp implementation - whatever pathing code goes here.
             _nodes = new List<Vector3>(2) {_player.Position, mousePosition};
+            AdjustNodes();
         }
+
+        private void AdjustNodes()
+        {
+            for (var i = 0; i < _nodes.Count; i++)
+            {
+                if (i != 0) _nodes[i] = Art.PointOnCircle(.5f, Art.AngleTest(_nodes[i], _nodes[i - 1]), _nodes[i]);
+            }
+        }
+
         public void Destroy()
         {
             _player.Path = null;
