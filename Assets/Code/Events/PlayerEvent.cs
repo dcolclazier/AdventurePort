@@ -10,27 +10,14 @@ namespace Assets.Code.Events
         private static PlayerEvent _instance;
         public static PlayerEvent Triggers { get { return _instance ?? (_instance = new PlayerEvent()); } }
 
-        private PlayingGameState _gameState;
-        public PlayerEvent()
-        {
-
-        }
-
         public void Update()
         {
-
-            //If there is a player tag that isn't in our list, add it.
-            //
-            //
-            //If any player event occurs, trigger event. Needs to have access to all player entities.. Who
-            //has this data? Who should have this data?
-
-            //If mouseOver, triger mouseOver event
-            //If mouseExit, trigger mouseExit event
 
         }
 
         public event PlayerTrigger MouseEnteredPlayerSpace;
+
+        //these should be private, I think...
         public void OnMouseEntered(Player player)
         {
             if (MouseEnteredPlayerSpace != null) MouseEnteredPlayerSpace(player);
