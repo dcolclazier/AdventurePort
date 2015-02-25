@@ -32,5 +32,20 @@ namespace Assets.Code.Scripts
             pathPrefab.Initialize(player);
             return pathPrefab;
         }
+
+        public TurnCirclePrefab CreatePathTurnCircle(float radius)
+        {
+            var turnCircleObject = (GameObject) Instantiate(Resources.Load("Prefabs/Path/TurnCirclePrefab"));
+            var turnCirclePrefab = (TurnCirclePrefab) turnCircleObject.GetComponent(typeof (TurnCirclePrefab));
+            turnCirclePrefab.Initialize(radius);
+            return turnCirclePrefab;
+        }
+
+        public PathLinePrefab CreatePathLine()
+        {
+            var pathLineObj = (GameObject)Instantiate(Resources.Load("Prefabs/Path/PathLinePrefab"));
+            var pathLinePrefab = (PathLinePrefab)pathLineObj.GetComponent(typeof(PathLinePrefab));
+            return pathLinePrefab;
+        }
     }
 }

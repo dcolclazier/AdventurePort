@@ -37,6 +37,15 @@ namespace Assets.Code.Abstract
 
         }
 
+        public static void DrawLine(LineRenderer lr, Vector3 pointA, Vector3 pointB, float width = .05f)
+        {
+            lr.SetVertexCount(2);
+            lr.SetWidth(width,width);
+
+            lr.SetPosition(0,pointA);
+            lr.SetPosition(1,pointB);
+        }
+
       
         //smaller the precision, the more vertices in circle.
         public static void DrawCircle(LineRenderer lr, Vector3 center, float radius, float precision = .05f, float width = .025f)
@@ -46,14 +55,14 @@ namespace Assets.Code.Abstract
             lr.SetVertexCount((int)vertexCount); 
       
             lr.SetWidth(width, width);
-            lr.SetColors(Color.black,Color.blue);
+            lr.SetColors(Color.yellow,Color.yellow);
 
             var vertexIndex = 0;
             for (var theta = 0f; theta < (2 * Mathf.PI); theta += precision)
             {
                 // Calculate position of point
-                var x = (radius*.25f) * Mathf.Cos(theta) + center.x;
-                var y = (radius*.25f) * Mathf.Sin(theta) + center.y;
+                var x = (radius) * Mathf.Cos(theta) + center.x;
+                var y = (radius) * Mathf.Sin(theta) + center.y;
                 // Set the position of this point
                 var position = new Vector3(x, y, 0);
                 lr.SetPosition(vertexIndex, position);

@@ -25,7 +25,6 @@ namespace Assets.Code.GameObjects._Halo
         public void Create()
         {
             _haloPrefab = _haloPrefab = PrefabFactory.Instance.CreateSelectorHalo(_player);
-
         }
 
         public void Destroy()

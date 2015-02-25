@@ -48,10 +48,13 @@ namespace Assets.Code.GameObjects._Path.Event_Handlers
         {
             if (button != MouseButton.Right) return;
 
-            if (_player.Selected && _player.CanMove && !_player.MouseOver)
+            if (_player.Selected && _player.CanMove)
             {
-                _path.UpdateNodes(mousePosition);
-                _path.Draw(true);           
+                //_path.UpdateNodes(mousePosition);
+                //_path.OldDraw(true);
+           
+                _path.UpdateSegments(mousePosition);
+                _path.Draw();
             }
         }
 
