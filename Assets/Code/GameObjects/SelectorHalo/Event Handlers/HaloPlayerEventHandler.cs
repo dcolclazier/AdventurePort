@@ -1,5 +1,6 @@
 using Assets.Code.Abstract.Interfaces;
 using Assets.Code.Events;
+using Assets.Code.GameObjects.PlayerCharacter;
 
 namespace Assets.Code.GameObjects.SelectorHalo.Event_Handlers
 {
@@ -7,12 +8,14 @@ namespace Assets.Code.GameObjects.SelectorHalo.Event_Handlers
     {
         private readonly SelectorHalo _halo;
         private SelectorHaloPrefab _haloPrefab;
+        private Player _player;
 
 
-        public HaloPlayerEventHandler(SelectorHalo halo, SelectorHaloPrefab haloPrefab)
+        public HaloPlayerEventHandler(SelectorHalo halo, SelectorHaloPrefab haloPrefab, Player player)
         {
             _halo = halo;
             _haloPrefab = haloPrefab;
+            _player = player;
         }
 
         public void Initialize()
@@ -27,13 +30,17 @@ namespace Assets.Code.GameObjects.SelectorHalo.Event_Handlers
             PlayerEvent.Triggers.MouseExitedPlayerSpace -= MouseExitedPlayerSpace;        
         }
 
-        private void MouseExitedPlayerSpace(Player.Player player)
+        private void MouseExitedPlayerSpace(Player player)
         {
+            if (_player != player) return;
+
             if (_haloPrefab != null && !player.Selected) _halo.Destroy();
         }
 
-        public void MouseEnteredPlayerSpace(Player.Player player)
+        public void MouseEnteredPlayerSpace(Player player)
         {
+            if (_player != player) return;
+
             if (_haloPrefab == null && !player.Selected) _halo.CreateHalo();
 
         }

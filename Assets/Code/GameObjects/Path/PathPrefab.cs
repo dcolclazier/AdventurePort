@@ -9,7 +9,7 @@ namespace Assets.Code.GameObjects.Path
     {
         private LineRenderer _pathLine;
         public bool Visible { get { return _pathLine.enabled; } set { _pathLine.enabled = value; } }
-        public void Initialize(Player.Player player)
+        public void Initialize(PlayerCharacter.Player player)
         {
             gameObject.transform.parent = player.transform;
             

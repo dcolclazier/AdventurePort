@@ -1,5 +1,5 @@
 using Assets.Code.GameObjects.Path;
-using Assets.Code.GameObjects.Player;
+using Assets.Code.GameObjects.PlayerCharacter;
 using Assets.Code.GameObjects.SelectorHalo;
 using UnityEngine;
 

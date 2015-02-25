@@ -9,14 +9,14 @@ namespace Assets.Code.GameObjects.Path
 {
     public class Path : IGameObject
     {
-        private readonly Player.Player _player;
+        private readonly PlayerCharacter.Player _player;
         private PathPrefab _pathPrefab;
         private PathInputEventHandler _pathEventHandler;
     
         private bool _visible;
         private List<Vector3> _nodes;
     
-        public Path(Player.Player player)
+        public Path(PlayerCharacter.Player player)
         {
             _player = player;
 

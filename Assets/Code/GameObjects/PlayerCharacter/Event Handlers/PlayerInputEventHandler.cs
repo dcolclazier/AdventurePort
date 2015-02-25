@@ -3,12 +3,12 @@ using Assets.Code.Abstract.Interfaces;
 using Assets.Code.Events;
 using UnityEngine;
 
-namespace Assets.Code.GameObjects.Player.Event_Handlers
+namespace Assets.Code.GameObjects.PlayerCharacter.Event_Handlers
 {
     public class PlayerInputEventHandler : IInputEventHandler
     {
-        private readonly Player _player;
-        public PlayerInputEventHandler(Player player)
+        private readonly PlayerCharacter.Player _player;
+        public PlayerInputEventHandler(PlayerCharacter.Player player)
         {
             _player = player;
         }

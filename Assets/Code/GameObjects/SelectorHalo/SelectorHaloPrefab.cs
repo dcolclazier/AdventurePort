@@ -5,14 +5,14 @@ namespace Assets.Code.GameObjects.SelectorHalo
 {
     public class SelectorHaloPrefab : MonoBehaviour, IPrefab
     {
-        private Player.Player _player;
+        private PlayerCharacter.Player _player;
 
         void Update()
         {
             if (_player == null) return;
             gameObject.transform.position = _player.transform.position;
         }
-        public void Initialize(Player.Player player)
+        public void Initialize(PlayerCharacter.Player player)
         {
             _player = player;
             gameObject.transform.parent = _player.transform;

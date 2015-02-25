@@ -66,8 +66,8 @@
      <Compile Include="Assets\Code\GameObjects\Path\Event Handlers\PathInputEventHandler.cs" />
      <Compile Include="Assets\Code\GameObjects\Path\Path.cs" />
      <Compile Include="Assets\Code\GameObjects\Path\PathPrefab.cs" />
-     <Compile Include="Assets\Code\GameObjects\Player\Event Handlers\PlayerInputEventHandler.cs" />
-     <Compile Include="Assets\Code\GameObjects\Player\Player.cs" />
+     <Compile Include="Assets\Code\GameObjects\PlayerCharacter\Event Handlers\PlayerInputEventHandler.cs" />
+     <Compile Include="Assets\Code\GameObjects\PlayerCharacter\Player.cs" />
      <Compile Include="Assets\Code\GameObjects\SelectorHalo\Event Handlers\HaloInputEventHandler.cs" />
      <Compile Include="Assets\Code\GameObjects\SelectorHalo\Event Handlers\HaloPlayerEventHandler.cs" />
      <Compile Include="Assets\Code\GameObjects\SelectorHalo\SelectorHalo.cs" />

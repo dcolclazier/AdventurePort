@@ -8,9 +8,9 @@ namespace Assets.Code.GameObjects.Path.Event_Handlers
     public class PathInputEventHandler : IInputEventHandler
     {
         private Path _path;
-        private readonly Player.Player _player;
+        private readonly PlayerCharacter.Player _player;
 
-        public PathInputEventHandler(Path path, Player.Player player)
+        public PathInputEventHandler(Path path, PlayerCharacter.Player player)
         {
             _path = path;
             _player = player;

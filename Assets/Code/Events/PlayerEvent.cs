@@ -1,6 +1,6 @@
 using Assets.Code.Abstract.Interfaces;
 using Assets.Code.Delegates;
-using Assets.Code.GameObjects.Player;
+using Assets.Code.GameObjects.PlayerCharacter;
 using Assets.Code.States;
 
 namespace Assets.Code.Events

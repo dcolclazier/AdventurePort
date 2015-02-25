@@ -1,8 +1,8 @@
 ﻿using Assets.Code.Events;
-using Assets.Code.GameObjects.Player.Event_Handlers;
+using Assets.Code.GameObjects.PlayerCharacter.Event_Handlers;
 using UnityEngine;
 
-namespace Assets.Code.GameObjects.Player
+namespace Assets.Code.GameObjects.PlayerCharacter
 {
     public class Player : MonoBehaviour
     {
