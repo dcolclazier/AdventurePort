@@ -1,11 +1,16 @@
 ﻿using Assets.Code.Events;
-using Assets.Code.GameObjects.PlayerCharacter.Event_Handlers;
+using Assets.Code.GameObjects._Halo;
+using Assets.Code.GameObjects._Path;
+using Assets.Code.GameObjects._Player.Event_Handlers;
 using UnityEngine;
 
-namespace Assets.Code.GameObjects.PlayerCharacter
+namespace Assets.Code.GameObjects._Player
 {
-    public class Player : MonoBehaviour
+    public class Player : MonoBehaviour 
     {
+        //This class needs to be reworked into the gameobject style....
+
+        
         #region UnityFields
         //public Transform Transform;
         public float PlayerSpeed;
@@ -13,15 +18,15 @@ namespace Assets.Code.GameObjects.PlayerCharacter
     
         public bool Moving { get; set; }
         public bool Selected { get; set; }
-        public bool CanMove { get; set; }
+        public bool CanMove; //{ get; set; }
         public bool MouseOver { get; set; }
         public Vector3 Position { get { return gameObject.transform.position; } }
 
         //test stuff
         public int MoveDistance { get; set; }
-        public Path.Path Path { get; set; }
+        public Path Path { get; set; }
 
-        public SelectorHalo.SelectorHalo Halo { get; set; }
+        public Halo Halo { get; set; }
  
         void Awake()
         {
@@ -29,6 +34,7 @@ namespace Assets.Code.GameObjects.PlayerCharacter
             inputEventHandler.Initialize();
         
             Path = null;
+            PlayerSpeed = 20f;
             MoveDistance = 10;
             CanMove = true;
         }
@@ -55,7 +61,7 @@ namespace Assets.Code.GameObjects.PlayerCharacter
             PlayerEvent.Triggers.OnMouseEntered(this);
 
             //should this go somewhere else?
-            if (Halo == null) Halo = new SelectorHalo.SelectorHalo(this);
+            if (Halo == null) Halo = new Halo(this);
         }
         private void OnMouseExit()
         {

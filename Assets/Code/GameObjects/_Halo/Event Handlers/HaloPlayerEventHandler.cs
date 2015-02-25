@@ -1,17 +1,17 @@
 using Assets.Code.Abstract.Interfaces;
 using Assets.Code.Events;
-using Assets.Code.GameObjects.PlayerCharacter;
+using Assets.Code.GameObjects._Player;
 
-namespace Assets.Code.GameObjects.SelectorHalo.Event_Handlers
+namespace Assets.Code.GameObjects._Halo.Event_Handlers
 {
     public class HaloPlayerEventHandler : IPlayerEventHandler
     {
-        private readonly SelectorHalo _halo;
-        private SelectorHaloPrefab _haloPrefab;
+        private readonly Halo _halo;
+        private HaloPrefab _haloPrefab;
         private Player _player;
 
 
-        public HaloPlayerEventHandler(SelectorHalo halo, SelectorHaloPrefab haloPrefab, Player player)
+        public HaloPlayerEventHandler(Halo halo, HaloPrefab haloPrefab, Player player)
         {
             _halo = halo;
             _haloPrefab = haloPrefab;
@@ -41,7 +41,7 @@ namespace Assets.Code.GameObjects.SelectorHalo.Event_Handlers
         {
             if (_player != player) return;
 
-            if (_haloPrefab == null && !player.Selected) _halo.CreateHalo();
+            if (_haloPrefab == null && !player.Selected) _halo.Create();
 
         }
    

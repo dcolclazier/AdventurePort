@@ -3,7 +3,7 @@ using Assets.Code.Abstract.Interfaces;
 using Assets.Code.Events;
 using UnityEngine;
 
-namespace Assets.Code.GameObjects.Cameras.Event_Handlers
+namespace Assets.Code.GameObjects._Cameras.Event_Handlers
 {
     public class CameraInputEventHandler : IInputEventHandler
     {

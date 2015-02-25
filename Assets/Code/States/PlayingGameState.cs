@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Assets.Code.Abstract.Interfaces;
 using Assets.Code.Events;
-using Assets.Code.GameObjects.Cameras;
+using Assets.Code.GameObjects._Cameras;
 using Assets.Code.GameStack;
 using Assets.Code.GameStack.Blocks;
 using Assets.Code.GameStack.Interrupts;

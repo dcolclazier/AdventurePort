@@ -1,4 +1,4 @@
-using Assets.Code.GameObjects.PlayerCharacter;
+using Assets.Code.GameObjects._Player;
 
 namespace Assets.Code.Delegates
 {

@@ -1,7 +1,7 @@
-﻿using Assets.Code.GameObjects.Cameras.Event_Handlers;
+﻿using Assets.Code.GameObjects._Cameras.Event_Handlers;
 using UnityEngine;
 
-namespace Assets.Code.GameObjects.Cameras
+namespace Assets.Code.GameObjects._Cameras
 {
 
     public class CameraManager

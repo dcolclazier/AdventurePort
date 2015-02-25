@@ -1,16 +1,17 @@
 using Assets.Code.Abstract;
 using Assets.Code.Abstract.Interfaces;
 using Assets.Code.Events;
+using Assets.Code.GameObjects._Player;
 using UnityEngine;
 
-namespace Assets.Code.GameObjects.Path.Event_Handlers
+namespace Assets.Code.GameObjects._Path.Event_Handlers
 {
     public class PathInputEventHandler : IInputEventHandler
     {
         private Path _path;
-        private readonly PlayerCharacter.Player _player;
+        private readonly Player _player;
 
-        public PathInputEventHandler(Path path, PlayerCharacter.Player player)
+        public PathInputEventHandler(Path path, Player player)
         {
             _path = path;
             _player = player;

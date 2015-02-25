@@ -1,15 +1,16 @@
 using System.Collections.Generic;
 using Assets.Code.Abstract;
 using Assets.Code.Abstract.Interfaces;
+using Assets.Code.GameObjects._Player;
 using UnityEngine;
 
-namespace Assets.Code.GameObjects.Path
+namespace Assets.Code.GameObjects._Path
 {
     public class PathPrefab : MonoBehaviour, IPrefab
     {
         private LineRenderer _pathLine;
         public bool Visible { get { return _pathLine.enabled; } set { _pathLine.enabled = value; } }
-        public void Initialize(PlayerCharacter.Player player)
+        public void Initialize(Player player)
         {
             gameObject.transform.parent = player.transform;
             

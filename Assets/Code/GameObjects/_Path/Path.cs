@@ -1,22 +1,23 @@
 using System.Collections.Generic;
 using Assets.Code.Abstract.Interfaces;
-using Assets.Code.GameObjects.Path.Event_Handlers;
+using Assets.Code.GameObjects._Path.Event_Handlers;
+using Assets.Code.GameObjects._Player;
 using Assets.Code.Scripts;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace Assets.Code.GameObjects.Path
+namespace Assets.Code.GameObjects._Path
 {
     public class Path : IGameObject
     {
-        private readonly PlayerCharacter.Player _player;
+        private readonly Player _player;
         private PathPrefab _pathPrefab;
         private PathInputEventHandler _pathEventHandler;
     
         private bool _visible;
         private List<Vector3> _nodes;
     
-        public Path(PlayerCharacter.Player player)
+        public Path(Player player)
         {
             _player = player;
 

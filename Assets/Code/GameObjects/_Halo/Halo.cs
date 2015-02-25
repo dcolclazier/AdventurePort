@@ -1,17 +1,18 @@
 using Assets.Code.Abstract.Interfaces;
-using Assets.Code.GameObjects.PlayerCharacter;
-using Assets.Code.GameObjects.SelectorHalo.Event_Handlers;
+using Assets.Code.GameObjects._Halo.Event_Handlers;
+using Assets.Code.GameObjects._Halo;
+using Assets.Code.GameObjects._Player;
 using Assets.Code.Scripts;
 
-namespace Assets.Code.GameObjects.SelectorHalo
+namespace Assets.Code.GameObjects._Halo
 {
-    public class SelectorHalo : IGameObject
+    public class Halo : IGameObject
     {
-        private SelectorHaloPrefab _haloPrefab;
+        private HaloPrefab _haloPrefab;
         private readonly Player _player;
         private HaloPlayerEventHandler _haloPlayerEventHandler;
 
-        public SelectorHalo(Player player)
+        public Halo(Player player)
         {
             _player = player;
             _haloPrefab = PrefabFactory.Instance.CreateSelectorHalo(_player);

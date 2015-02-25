@@ -1,9 +1,7 @@
-using Assets.Code.Abstract;
 using Assets.Code.Abstract.Interfaces;
-using Assets.Code.Events;
-using UnityEngine;
+using Assets.Code.GameObjects._Halo;
 
-namespace Assets.Code.GameObjects.SelectorHalo.Event_Handlers
+namespace Assets.Code.__SKELETONS___DO_NOT_USE
 {
 
     //Skeleton InputEventHandler class ALWAYS Implement IInputEventHandler... You could add functions here like:
@@ -35,14 +33,14 @@ namespace Assets.Code.GameObjects.SelectorHalo.Event_Handlers
      *   to validate the input perfectly, or weird results could occur.
      *   
      * This general format will be the same for ALL game events.. For example, PlayerEvent has been 
-     * started, with the mouseEnter and mouseExit events available for whoever needs them. I use this to handle
+     * started, with the mouseEnter and mouseExit events available for whoever needs them. I use these to handle
      * selector halo creation/destruction.
      */
     public class InputEventHandler : IInputEventHandler
     {
-        private readonly SelectorHalo _halo;
+        private readonly Halo _halo;
 
-        public InputEventHandler(SelectorHalo halo)
+        public InputEventHandler(Halo halo)
         {
             _halo = halo;
         }

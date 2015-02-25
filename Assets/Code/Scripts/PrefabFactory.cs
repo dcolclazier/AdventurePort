@@ -1,6 +1,6 @@
-using Assets.Code.GameObjects.Path;
-using Assets.Code.GameObjects.PlayerCharacter;
-using Assets.Code.GameObjects.SelectorHalo;
+using Assets.Code.GameObjects._Halo;
+using Assets.Code.GameObjects._Path;
+using Assets.Code.GameObjects._Player;
 using UnityEngine;
 
 namespace Assets.Code.Scripts
@@ -17,10 +17,10 @@ namespace Assets.Code.Scripts
             Instance = this;
         }
 
-        public SelectorHaloPrefab CreateSelectorHalo(Player player)
+        public HaloPrefab CreateSelectorHalo(Player player)
         {
-            var haloPrefab = (GameObject) Instantiate(Resources.Load("Prefabs/SelectorHaloPrefab"));
-            var halo = haloPrefab.GetComponent<SelectorHaloPrefab>();
+            var haloPrefab = (GameObject) Instantiate(Resources.Load("Prefabs/HaloPrefab"));
+            var halo = haloPrefab.GetComponent<HaloPrefab>();
             halo.Initialize(player);
             return halo;
         }

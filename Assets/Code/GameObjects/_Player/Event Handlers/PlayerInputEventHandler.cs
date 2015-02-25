@@ -1,14 +1,15 @@
 using Assets.Code.Abstract;
 using Assets.Code.Abstract.Interfaces;
 using Assets.Code.Events;
+using Assets.Code.GameObjects._Path;
 using UnityEngine;
 
-namespace Assets.Code.GameObjects.PlayerCharacter.Event_Handlers
+namespace Assets.Code.GameObjects._Player.Event_Handlers
 {
     public class PlayerInputEventHandler : IInputEventHandler
     {
-        private readonly PlayerCharacter.Player _player;
-        public PlayerInputEventHandler(PlayerCharacter.Player player)
+        private readonly Player _player;
+        public PlayerInputEventHandler(Player player)
         {
             _player = player;
         }
@@ -29,7 +30,7 @@ namespace Assets.Code.GameObjects.PlayerCharacter.Event_Handlers
 
             if (_player.CanMove)
             {
-                if (_player.Path == null) _player.Path = new Path.Path(_player);
+                if (_player.Path == null) _player.Path = new Path(_player);
             }
         }
         public void LeftMouseClicked(MouseButton button, Vector3 mouseposition)
