@@ -19,10 +19,16 @@ namespace Assets.Code.GameObjects._Path
         private bool _visible;
         private List<PathSegment> _segments;
         private readonly float _pathCircleRadius;
+        private Color _circleColor;
+        private Color _lineColorB;
+        private Color _lineColorA;
 
-        public Path(Player player)
+        public Path(Player player, Color circleColor, Color lineColorA, Color lineColorB)
         {
             _pathCircleRadius = .25f;
+            _circleColor = circleColor;
+            _lineColorA = lineColorA;
+            _lineColorB = lineColorB;
 
             _player = player;
             _pathEventHandler = new PathInputEventHandler(this, _player);
@@ -31,9 +37,9 @@ namespace Assets.Code.GameObjects._Path
         }
         public void Draw()
         {
-            _segments.ForEach(p=>p.Draw());
+            _segments.ForEach(p=>p.Draw(_circleColor, _lineColorA, _lineColorB));
         }
-        public void UpdateSegments(Vector3 mousePosition)
+        public void UpdateSegments(Vector3 mousePosition) // this function looks nasty....
         {
             if (_segments == null)
             {

@@ -22,6 +22,7 @@ namespace Assets.Code.GameObjects._Path._PathSegment
 
         private Vector3 _adjustedEndpoint;
         
+
         public PathSegment(Vector3 startPoint, Vector3 endPoint, Transform parent, float maxLength, float circleRadius)
         {
             StartPoint = startPoint;
@@ -48,10 +49,10 @@ namespace Assets.Code.GameObjects._Path._PathSegment
             _adjustedEndpoint = DaveMath.FindCircleEdge(EndPoint, StartPoint, _circleRadius);
 
         }
-        public void Draw()
+        public void Draw(Color circleColor, Color pathColorA, Color pathColorB)
         {
-            _pathLine.Draw(StartPoint,_adjustedEndpoint);
-            _pathCircle.Draw(EndPoint);
+            _pathLine.Draw(StartPoint,_adjustedEndpoint, pathColorA, pathColorB);
+            _pathCircle.Draw(EndPoint, circleColor);
         }
 
         public void Destroy()

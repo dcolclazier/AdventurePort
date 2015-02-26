@@ -27,9 +27,9 @@ namespace Assets.Code.GameObjects._Path._PathSegment
             Destroy(gameObject);
         }
 
-        public void Draw(Vector3 origin, Vector3 destination)
+        public void Draw(Vector3 origin, Vector3 destination, Color colorA, Color colorB)
         {
-            Art.DrawLine(_pathLine, origin, destination);        
+            Art.DrawLine(_pathLine, origin, destination, colorA, colorB);        
         }
     }
 }

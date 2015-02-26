@@ -30,7 +30,7 @@ namespace Assets.Code.GameObjects._Player.Event_Handlers
 
             if (_player.CanMove)
             {
-                if (_player.Path == null) _player.Path = new Path(_player);
+                if (_player.Path == null) _player.Path = new Path(_player, Color.yellow,Color.white,Color.black);
             }
         }
         public void LeftMouseClicked(MouseButton button, Vector3 mouseposition)

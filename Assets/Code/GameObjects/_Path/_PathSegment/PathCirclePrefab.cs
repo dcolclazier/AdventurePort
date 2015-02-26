@@ -21,9 +21,9 @@ namespace Assets.Code.GameObjects._Path._PathSegment
             _turnCircle.sharedMaterial = new Material(Shader.Find("Particles/Additive"));
             Radius = 1;
         }
-        public void Draw(Vector3 position)
+        public void Draw(Vector3 position, Color color)
         {
-            Art.DrawCircle(_turnCircle, position, Radius);
+            Art.DrawCircle(_turnCircle, position, color, Radius);
         }
         public void Destroy()
         {

@@ -7,8 +7,9 @@ namespace Assets.Code.Abstract
 {
     public static class Art 
     {
-        public static void DrawLine(LineRenderer lr, Vector3 pointA, Vector3 pointB, float width = .05f)
+        public static void DrawLine(LineRenderer lr, Vector3 pointA, Vector3 pointB, Color colorA, Color colorB, float width = .05f)
         {
+            lr.SetColors(colorA,colorB);
             lr.SetVertexCount(2);
             lr.SetWidth(width,width);
 
@@ -17,14 +18,14 @@ namespace Assets.Code.Abstract
         }
 
         
-        public static void DrawCircle(LineRenderer lr, Vector3 center, float radius, float precision = .05f, float width = .025f)
+        public static void DrawCircle(LineRenderer lr, Vector3 center, Color color, float radius, float precision = .05f, float width = .025f)
         {
             //smaller the precision, higher the vertex count
             var vertexCount = Math.Round((2f*Mathf.PI)/precision);
             lr.SetVertexCount((int)vertexCount); 
       
             lr.SetWidth(width, width);
-            lr.SetColors(Color.Lerp(Color.yellow,Color.blue,5*Time.deltaTime),Color.Lerp(Color.yellow,Color.blue,5*Time.deltaTime));
+            lr.SetColors(color,color);
 
             var vertexIndex = 0;
             for (var theta = 0f; theta < (2 * Mathf.PI); theta += precision)
