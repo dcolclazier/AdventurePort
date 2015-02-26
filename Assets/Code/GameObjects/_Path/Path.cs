@@ -35,23 +35,15 @@ namespace Assets.Code.GameObjects._Path
             {
                 foreach (var segment in _segments)
                 {
-                    Debug.Log("mouseposition: X: " + mousePosition.x + " Y: " + mousePosition.y + " Z: " + mousePosition.z);
-                    Debug.Log("normalized: X: " + mousePosition.normalized.x + " Y: " + mousePosition.normalized.y + " Z: " + mousePosition.normalized.z);
 
                     var test = new Vector3((mousePosition.x - segment.StartPoint.x),
                             (mousePosition.y - segment.StartPoint.y));
 
-                    Debug.Log("Test x: " + test.x + " Y: " + test.y);
-                    Debug.Log("Test normalized x: " + (test.normalized.x * _player.MoveDistance) + " Y: " + (test.normalized.y * _player.MoveDistance));
-
                     Vector3 actualPosition;
-                    if (segment.Length < _player.MoveDistance) actualPosition = mousePosition;
+                    if (DaveMath.Length(segment.StartPoint, mousePosition) < _player.MoveDistance) actualPosition = mousePosition;
                     else
                     {
-
-
                         actualPosition = (test.normalized * _player.MoveDistance )+ segment.StartPoint;
-                        //actualPosition = mousePosition.normalized*_player.MoveDistance;
                     }
                     segment.UpdatePoints(_player.Position,actualPosition);
                 }
