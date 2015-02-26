@@ -1,15 +1,27 @@
 using System;
-using UnityEditor;
 using UnityEngine;
 
 namespace Assets.Code.Abstract
 {
     public static class DaveMath
     {
-        public static float Heading(Vector3 destination, Vector3 origin)
+        public static Vector3 FindCircleEdge(Vector3 origin, Vector3 directionToFace, float radius)
         {
-            var angle = (180 / Math.PI) * Mathf.Atan2(origin.y - destination.y, origin.x - destination.x);
+            var heading = Heading(origin, directionToFace);
+            return PointOnCircle2D(radius, heading, origin);
+        }
+
+        public static float Heading(Vector3 origin, Vector3 destination)
+        {
+            var angle = (180 / Math.PI) * Mathf.Atan2(destination.y - origin.y, destination.x - origin.x);
             return (float)angle;
+        }
+
+        public static Vector3 RelativeVector(Vector3 origin, Vector3 relativePoint)
+        {
+            var relativeVector = new Vector3((relativePoint.x - origin.x),
+                            (relativePoint.y - origin.y));
+            return relativeVector;
         }
         public static Vector3 OffsetVector(Vector3 origin, float x = 0f, float y = 0f)
         {

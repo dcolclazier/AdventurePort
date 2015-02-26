@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Assets.Code.GameObjects._Path
+namespace Assets.Code.Abstract
 {
     public static class Extensions
     {

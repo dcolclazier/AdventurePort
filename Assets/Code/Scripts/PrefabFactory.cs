@@ -1,5 +1,6 @@
 using Assets.Code.GameObjects._Halo;
 using Assets.Code.GameObjects._Path;
+using Assets.Code.GameObjects._Path._PathSegment;
 using Assets.Code.GameObjects._Player;
 using UnityEngine;
 

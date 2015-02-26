@@ -2,7 +2,7 @@ using Assets.Code.Abstract;
 using Assets.Code.Abstract.Interfaces;
 using UnityEngine;
 
-namespace Assets.Code.GameObjects._Path
+namespace Assets.Code.GameObjects._Path._PathSegment
 {
     public class PathCirclePrefab : MonoBehaviour, IPrefab
     {

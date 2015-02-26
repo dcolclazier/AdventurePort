@@ -24,7 +24,7 @@ namespace Assets.Code.GameObjects._Cameras.Event_Handlers
         {
             if (button != MouseButton.Middle) return;
 
-            var moveDirection = new Vector3(-Input.GetAxis("Mouse X")*.42f, -Input.GetAxis("Mouse Y")*.42f, 0);
+            var moveDirection = new Vector3(-Input.GetAxis("Mouse X")*.6f, -Input.GetAxis("Mouse Y")*.6f, 0);
             _cameraManager.Main.transform.position += moveDirection;
         }
     }
