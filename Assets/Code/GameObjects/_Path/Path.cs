@@ -31,6 +31,17 @@ namespace Assets.Code.GameObjects._Path
         }
         public void UpdateSegments(Vector3 mousePosition)
         {
+            //var actualPosition = new Vector3();
+            //if (_segments != null)
+            //{
+            //    foreach (var segment in _segments)
+            //    {
+            //        if (segment.Length < _player.MoveDistance) actualPosition = mousePosition;
+            //        else
+            //    }
+            //}
+            //else
+            //    _segments = new List<PathSegment> {new PathSegment(_player.Position, mousePosition, _player.transform)};
             if(_segments != null) _segments.ForEach(p=>p.UpdatePoints(_player.Position,mousePosition)); 
             else _segments = new List<PathSegment> {new PathSegment(_player.Position, mousePosition,_player.transform)};
             
