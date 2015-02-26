@@ -4,6 +4,7 @@ namespace Assets.Code.Abstract.Interfaces
 {
     public interface IPrefab
     {
+        bool Enabled { set; }
         void Destroy();
     }
 }

@@ -47,6 +47,8 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Code\Abstract\Art.cs" />
+     <Compile Include="Assets\Code\Abstract\DaveMath.cs" />
+     <Compile Include="Assets\Code\Abstract\Extensions.cs" />
      <Compile Include="Assets\Code\Abstract\Interfaces\IBlock.cs" />
      <Compile Include="Assets\Code\Abstract\Interfaces\IEvent.cs" />
      <Compile Include="Assets\Code\Abstract\Interfaces\IGameObject.cs" />
@@ -68,10 +70,9 @@
      <Compile Include="Assets\Code\GameObjects\_Halo\HaloPrefab.cs" />
      <Compile Include="Assets\Code\GameObjects\_Path\Event Handlers\PathInputEventHandler.cs" />
      <Compile Include="Assets\Code\GameObjects\_Path\Path.cs" />
-     <Compile Include="Assets\Code\GameObjects\_Path\PathPrefab.cs" />
+     <Compile Include="Assets\Code\GameObjects\_Path\_PathSegment\PathCirclePrefab.cs" />
      <Compile Include="Assets\Code\GameObjects\_Path\_PathSegment\PathLinePrefab.cs" />
      <Compile Include="Assets\Code\GameObjects\_Path\_PathSegment\PathSegment.cs" />
-     <Compile Include="Assets\Code\GameObjects\_Path\_PathSegment\TurnCirclePrefab.cs" />
      <Compile Include="Assets\Code\GameObjects\_Player\Event Handlers\PlayerInputEventHandler.cs" />
      <Compile Include="Assets\Code\GameObjects\_Player\Player.cs" />
      <Compile Include="Assets\Code\GameStack\Blocks\InfoBlock.cs" />

@@ -9,9 +9,6 @@ namespace Assets.Code.Scripts
     {
         public static PrefabFactory Instance { get; private set; }
 
-        public GameObject PathPrefab;
-        public GameObject SelectorHaloPrefab;
-
         public void Awake()
         {
             Instance = this;
@@ -24,21 +21,13 @@ namespace Assets.Code.Scripts
             halo.Initialize(player);
             return halo;
         }
-        
-        public PathPrefab CreatePathPrefab(Player player)
-        {
-            var pathObject = (GameObject)Instantiate(Resources.Load("Prefabs/PathPrefab"));
-            var pathPrefab = (PathPrefab) pathObject.GetComponent(typeof (PathPrefab));
-            pathPrefab.Initialize(player);
-            return pathPrefab;
-        }
 
-        public TurnCirclePrefab CreatePathTurnCircle(float radius)
+        public PathCirclePrefab CreatePathTurnCircle(float radius)
         {
-            var turnCircleObject = (GameObject) Instantiate(Resources.Load("Prefabs/Path/TurnCirclePrefab"));
-            var turnCirclePrefab = (TurnCirclePrefab) turnCircleObject.GetComponent(typeof (TurnCirclePrefab));
-            turnCirclePrefab.Initialize(radius);
-            return turnCirclePrefab;
+            var pathCircleObject = (GameObject) Instantiate(Resources.Load("Prefabs/Path/PathCirclePrefab"));
+            var pathCirclePrefab = (PathCirclePrefab) pathCircleObject.GetComponent(typeof (PathCirclePrefab));
+            pathCirclePrefab.Initialize(radius);
+            return pathCirclePrefab;
         }
 
         public PathLinePrefab CreatePathLine()

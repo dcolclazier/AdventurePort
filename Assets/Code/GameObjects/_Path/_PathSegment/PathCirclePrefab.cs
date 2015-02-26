@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Assets.Code.GameObjects._Path
 {
-    public class TurnCirclePrefab : MonoBehaviour, IPrefab
+    public class PathCirclePrefab : MonoBehaviour, IPrefab
     {
         private LineRenderer _turnCircle;
         public float Radius { get; private set; }

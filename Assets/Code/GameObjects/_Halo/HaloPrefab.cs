@@ -18,6 +18,12 @@ namespace Assets.Code.GameObjects._Halo
             _player = player;
             gameObject.transform.parent = _player.transform;
         }
+
+        public bool Enabled
+        {
+            set {  }
+        }
+
         public void Destroy()
         {
             Destroy(gameObject);
