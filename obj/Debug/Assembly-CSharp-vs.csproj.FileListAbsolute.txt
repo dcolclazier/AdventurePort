@@ -1,0 +1,11 @@
+C:\Users\David\Documents\AttemptedKylePort\Temp\bin\Debug\Assembly-CSharp.dll
+C:\Users\David\Documents\AttemptedKylePort\Temp\bin\Debug\Assembly-CSharp.pdb
+C:\Users\David\Documents\AttemptedKylePort\Temp\bin\Debug\UnityEditor.dll
+C:\Users\David\Documents\AttemptedKylePort\Temp\bin\Debug\UnityEngine.dll
+C:\Users\David\Documents\AttemptedKylePort\Temp\bin\Debug\Mono.Cecil.dll
+C:\Users\David\Documents\AttemptedKylePort\Temp\bin\Debug\nunit.framework.dll
+C:\Users\David\Documents\AttemptedKylePort\Temp\bin\Debug\Unity.DataContract.dll
+C:\Users\David\Documents\AttemptedKylePort\Temp\bin\Debug\ICSharpCode.NRefactory.dll
+C:\Users\David\Documents\AttemptedKylePort\obj\Debug\Assembly-CSharp-vs.csprojResolveAssemblyReference.cache
+C:\Users\David\Documents\AttemptedKylePort\obj\Debug\Assembly-CSharp.dll
+C:\Users\David\Documents\AttemptedKylePort\obj\Debug\Assembly-CSharp.pdb

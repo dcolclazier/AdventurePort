@@ -1,0 +1,10 @@
+fileFormatVersion: 2
+guid: 48ca5c1ce29f9ab44995f3281b5d08c7
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - PathPrefab: {fileID: 100000, guid: ca75ae7970f606443ad579c527362e79, type: 2}
+  - SelectorHaloPrefab: {fileID: 100000, guid: 90ceee7206724cd45803b0d0c74f59c6, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
