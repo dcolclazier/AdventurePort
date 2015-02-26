@@ -32,6 +32,7 @@ namespace Assets.Code.GameObjects._Path
         public void UpdatePoints(Vector3 newOrigin, Vector3 newDestination)
         {
             StartPoint = newOrigin;
+            
             EndPoint = DaveMath.OffsetVector(newDestination,0f,TurnCircleRadius);
             _offsetPoint = OffsetPathLine(EndPoint, TurnCircleRadius);
             
