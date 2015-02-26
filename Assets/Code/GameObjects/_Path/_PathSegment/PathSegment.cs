@@ -35,7 +35,6 @@ namespace Assets.Code.GameObjects._Path
             
             EndPoint = DaveMath.OffsetVector(newDestination,0f,TurnCircleRadius);
             _offsetPoint = OffsetPathLine(EndPoint, TurnCircleRadius);
-            
         }
         public void Draw()
         {

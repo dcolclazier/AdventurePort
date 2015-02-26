@@ -31,19 +31,35 @@ namespace Assets.Code.GameObjects._Path
         }
         public void UpdateSegments(Vector3 mousePosition)
         {
-            //var actualPosition = new Vector3();
-            //if (_segments != null)
-            //{
-            //    foreach (var segment in _segments)
-            //    {
-            //        if (segment.Length < _player.MoveDistance) actualPosition = mousePosition;
-            //        else
-            //    }
-            //}
-            //else
-            //    _segments = new List<PathSegment> {new PathSegment(_player.Position, mousePosition, _player.transform)};
-            if(_segments != null) _segments.ForEach(p=>p.UpdatePoints(_player.Position,mousePosition)); 
-            else _segments = new List<PathSegment> {new PathSegment(_player.Position, mousePosition,_player.transform)};
+            if (_segments != null)
+            {
+                foreach (var segment in _segments)
+                {
+                    Debug.Log("mouseposition: X: " + mousePosition.x + " Y: " + mousePosition.y + " Z: " + mousePosition.z);
+                    Debug.Log("normalized: X: " + mousePosition.normalized.x + " Y: " + mousePosition.normalized.y + " Z: " + mousePosition.normalized.z);
+
+                    var test = new Vector3((mousePosition.x - segment.StartPoint.x),
+                            (mousePosition.y - segment.StartPoint.y));
+
+                    Debug.Log("Test x: " + test.x + " Y: " + test.y);
+                    Debug.Log("Test normalized x: " + (test.normalized.x * _player.MoveDistance) + " Y: " + (test.normalized.y * _player.MoveDistance));
+
+                    Vector3 actualPosition;
+                    if (segment.Length < _player.MoveDistance) actualPosition = mousePosition;
+                    else
+                    {
+
+
+                        actualPosition = (test.normalized * _player.MoveDistance )+ segment.StartPoint;
+                        //actualPosition = mousePosition.normalized*_player.MoveDistance;
+                    }
+                    segment.UpdatePoints(_player.Position,actualPosition);
+                }
+            }
+            else
+                _segments = new List<PathSegment> {new PathSegment(_player.Position, mousePosition, _player.transform)};
+            //if(_segments != null) _segments.ForEach(p=>p.UpdatePoints(_player.Position,mousePosition)); 
+            //else _segments = new List<PathSegment> {new PathSegment(_player.Position, mousePosition,_player.transform)};
             
         }
         public void Destroy()
