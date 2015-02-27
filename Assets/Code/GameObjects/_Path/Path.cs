@@ -46,27 +46,29 @@ namespace Assets.Code.GameObjects._Path
                 _segments = new List<PathSegment> { new PathSegment(_player.Position, mousePosition, _player.transform, _player.MoveDistance, _pathCircleRadius) };
                 return;
             }
-            
             double totalSegmentLength = 0;
+            var lengthToMouse = DaveMath.Length(_player.Position, mousePosition);
+            var expectedSegmentCount = Math.Ceiling(lengthToMouse / _player.MoveDistance);
+            if (_segments.Count > expectedSegmentCount)
+            {
+                _segments.Last().Destroy();
+                _segments.RemoveAt(_segments.Count - 1);
+            }
+
+            else if (totalSegmentLength <= lengthToMouse && _segments.Count < expectedSegmentCount)
+            {
+                _segments.Add(new PathSegment(_segments.Last().EndPoint, mousePosition, _player.transform, _player.MoveDistance, _pathCircleRadius));
+            }
+            
             for (var x = 0; x < _segments.Count; x++)
             {
                 totalSegmentLength += _segments[x].Length;
                 _segments[x].UpdateEndPoints(x == 0 ? _player.Position : _segments[x - 1].EndPoint, mousePosition);
             }
+            
 
-            var lengthToMouse = DaveMath.Length(_player.Position, mousePosition);
-            var expectedSegmentCount = Math.Ceiling(lengthToMouse/_player.MoveDistance);
-
-            if (totalSegmentLength <= lengthToMouse && _segments.Count < expectedSegmentCount)
-            {
-                _segments.Add(new PathSegment(_segments.Last().EndPoint, mousePosition, _player.transform, _player.MoveDistance, _pathCircleRadius));
-            }
-            else if(_segments.Count > expectedSegmentCount)
-            {
-                _segments.Last().Destroy();
-                _segments.RemoveAt(_segments.Count-1);
-            }
-
+            
+            
             
             
         }

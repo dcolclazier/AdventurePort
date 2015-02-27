@@ -35,7 +35,7 @@ namespace Assets.Code.GameObjects._Player
         
             Path = null;
             PlayerSpeed = 20f;
-            MoveDistance = 3;
+            MoveDistance = 4;
             CanMove = true;
         }
         void Start ()
