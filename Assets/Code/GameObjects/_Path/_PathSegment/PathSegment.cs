@@ -39,13 +39,14 @@ namespace Assets.Code.GameObjects._Path._PathSegment
         }
         public void UpdateEndPoints(Vector3 startPoint, Vector3 endPoint)
         {
+
             StartPoint = DaveMath.FindCircleEdge(startPoint, endPoint, _circleRadius);
 
             var correctedLengthVector = (DaveMath.Length(StartPoint, endPoint) < _maxLength) ? endPoint :
                     (DaveMath.RelativeVector(StartPoint, endPoint).normalized * _maxLength) + StartPoint;
             
-            EndPoint = DaveMath.OffsetVector(correctedLengthVector,0f,_circleRadius);
-
+            //EndPoint = DaveMath.OffsetVector(correctedLengthVector,0f,_circleRadius);
+            EndPoint = correctedLengthVector;
             _adjustedEndpoint = DaveMath.FindCircleEdge(EndPoint, StartPoint, _circleRadius);
 
         }
