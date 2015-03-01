@@ -19,9 +19,19 @@ namespace Assets.Code.GameObjects._Path
         private bool _visible;
         private List<PathSegment> _segments;
         private readonly float _pathCircleRadius;
-        private Color _circleColor;
-        private Color _lineColorB;
-        private Color _lineColorA;
+        private readonly Color _circleColor;
+        private readonly Color _lineColorB;
+        private readonly Color _lineColorA;
+
+        public PathSegment this[int index]
+        {
+            get
+            {
+                if(index < 0||index > _segments.Count) throw new IndexOutOfRangeException("Dumbass...");
+                return _segments[index];
+            }
+
+        }
 
         public Path(Player player, Color circleColor, Color lineColorA, Color lineColorB)
         {

@@ -7,8 +7,8 @@ namespace Assets.Code.GameObjects._Halo.Event_Handlers
     public class HaloPlayerEventHandler : IPlayerEventHandler
     {
         private readonly Halo _halo;
-        private HaloPrefab _haloPrefab;
-        private Player _player;
+        private readonly HaloPrefab _haloPrefab;
+        private readonly Player _player;
 
 
         public HaloPlayerEventHandler(Halo halo, HaloPrefab haloPrefab, Player player)

@@ -45,14 +45,12 @@ namespace Assets.Code.GameObjects._Path._PathSegment
             var correctedLengthVector = (DaveMath.Length(StartPoint, endPoint) < _maxLength) ? endPoint :
                     (DaveMath.RelativeVector(StartPoint, endPoint).normalized * _maxLength) + StartPoint;
             
-            //EndPoint = DaveMath.OffsetVector(correctedLengthVector,0f,_circleRadius);
-            EndPoint = correctedLengthVector;
-            _adjustedEndpoint = DaveMath.FindCircleEdge(EndPoint, StartPoint, _circleRadius);
+            EndPoint = DaveMath.FindCircleEdge(correctedLengthVector,StartPoint,_circleRadius);
 
         }
         public void Draw(Color circleColor, Color pathColorA, Color pathColorB)
         {
-            _pathLine.Draw(StartPoint,_adjustedEndpoint, pathColorA, pathColorB);
+            _pathLine.Draw(StartPoint,EndPoint, pathColorA, pathColorB);
             _pathCircle.Draw(EndPoint, circleColor);
         }
 

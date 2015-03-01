@@ -21,6 +21,11 @@ namespace Assets.Code.Abstract
             var offset = new Vector3(xOffset, yOffset);
             return origin + offset;
         }
+        public static Vector3 OffsetVector(Vector3 origin, Vector3 offsetVector)
+        {
+            
+            return origin + offsetVector;
+        }
         public static double Length(Vector3 p1, Vector3 p2)
         {
             return Math.Sqrt(((p2.x-p1.x)*(p2.x-p1.x))+((p2.y-p1.y)*(p2.y-p1.y)));
