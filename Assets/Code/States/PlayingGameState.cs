@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using Assets.Code.Abstract.Interfaces;
@@ -23,7 +24,7 @@ namespace Assets.Code.States
 
             StackManager = new StackManager();
             CameraManager = new CameraManager();
-         
+            
 
             //Temp code to test stack operation
             var testStackBlock = new InfoBlock(_manager);

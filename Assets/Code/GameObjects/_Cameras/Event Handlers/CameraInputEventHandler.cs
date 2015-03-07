@@ -23,7 +23,9 @@ namespace Assets.Code.GameObjects._Cameras.Event_Handlers
         public void MiddleMouseHeld(MouseButton button, Vector3 mouseposition)
         {
             if (button != MouseButton.Middle) return;
-
+            var a = 7;
+            var b = 8;
+            Debug.Log(a > b ? a.ToString() : b.ToString());
             var moveDirection = new Vector3(-Input.GetAxis("Mouse X")*.6f, -Input.GetAxis("Mouse Y")*.6f, 0);
             _cameraManager.Main.transform.position += moveDirection;
         }
